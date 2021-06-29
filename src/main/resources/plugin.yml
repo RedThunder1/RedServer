@@ -1,0 +1,10 @@
+name: Redserver
+version: ${project.version}
+main: redserver.redserver.RedMain
+api-version: 1.16
+
+commands:
+  smp:
+    description: Teleports the player to the smp world!
+  hub:
+    description: Teleports the player to the hub world!
