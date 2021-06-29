@@ -18,13 +18,8 @@ public class hub implements CommandExecutor {
             return false;
         }
         Player player = (Player) sender;
-        if (args.length == 0) {
-            player.sendMessage(ChatColor.RED + "Please enter a world to teleport to!");
-            return false;
-        }
-
         World world = Bukkit.getWorld("world");
-        Location location = new Location(world, 0.5, 77, 0.5);
+        Location location = new Location(world, -125.5, 69, 251.5);
 
         if (player.getWorld() == world) {
             player.sendMessage(ChatColor.RED + "You are already in this World!");
