@@ -1,4 +1,4 @@
-package redserver.redserver;
+package redserver.redserver.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,25 +7,35 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import redserver.redserver.RedMain;
 
-public class smptp implements CommandExecutor {
+import static sun.security.krb5.SCDynamicStoreConfig.getConfig;
+
+public class hub implements CommandExecutor {
+
+    private RedMain plugin;
+    public hub(RedMain plugin) {this.plugin = plugin;}
+
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "Only players can use this command!");
             return false;
         }
         Player player = (Player) sender;
-        World world = Bukkit.getWorld("smp");
-        Location location = new Location(world, 0.5, 77, 0.5);
-
+        World world = Bukkit.getWorld("world");
+        Location location = new Location(world, -125.5, 69, 249.5);
 
         if (player.getWorld() == world) {
             player.sendMessage(ChatColor.RED + "You are already in this World!");
             return false;
         }
+
 
         player.teleport(location);
 

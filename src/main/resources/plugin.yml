@@ -8,3 +8,21 @@ commands:
     description: Teleports the player to the smp world!
   hub:
     description: Teleports the player to the hub world!
+  pvp:
+    description: Teleports the player to the pvp world!
+  home:
+    description: Teleports the player to their bed location!
+  build:
+    description: Allows staff to build!
+  vanish:
+    description: Makes staff members invisible to players!
+  heal:
+    description: Heals players!
+  launch:
+    description: Launches players!
+  skull:
+    description: Gets the players skull!
+  report:
+    description: Allows players to report other players!
+  reports:
+    description: Allows staff to see reports that were made!

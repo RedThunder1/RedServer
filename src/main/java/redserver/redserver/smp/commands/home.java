@@ -1,4 +1,4 @@
-package redserver.redserver;
+package redserver.redserver.smp.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class hub implements CommandExecutor {
+public class home implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -18,15 +18,17 @@ public class hub implements CommandExecutor {
             return false;
         }
         Player player = (Player) sender;
-        World world = Bukkit.getWorld("world");
-        Location location = new Location(world, -125.5, 69, 251.5);
+        World world = Bukkit.getWorld("smp");
 
-        if (player.getWorld() == world) {
-            player.sendMessage(ChatColor.RED + "You are already in this World!");
+        if (!(player.getWorld() == world || player.getWorld() == Bukkit.getWorld("world_nether") || player.getWorld() == Bukkit.getWorld("world_end"))) {
+            player.sendMessage(ChatColor.RED + "This command can only be used in the smp world!!");
             return false;
         }
-
-        player.teleport(location);
+        if (player.getBedSpawnLocation() == null) {
+            player.sendMessage(ChatColor.RED + "You dont have a bed spawn yet!");
+        }
+        Location location1 = player.getBedSpawnLocation();
+        player.teleport(location1);
 
         return false;
     }
