@@ -35,10 +35,10 @@ public final class RedMain extends JavaPlugin {
     public ReportManager reportmanager;
     HashMap<UUID, Location> homeMap = new HashMap<>();
 
-    //TODO: Fix reports menu
-    //TODO: Create worl commands
-    //TODO: work on other minigames like kitpvp and duels
-    //TODO: tp players to their last pos in smp world
+    //TODO: Fix reports menu.
+    //TODO: Create worl commands.
+    //TODO: work on other minigames like kitpvp and duels.
+    //TODO: tp players to their last pos in smp world.
 
 
     @Override

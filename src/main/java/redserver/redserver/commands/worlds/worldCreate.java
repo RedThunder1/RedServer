@@ -1,6 +1,9 @@
 package redserver.redserver.commands.worlds;
 
 import org.bukkit.ChatColor;
+import org.bukkit.World;
+import org.bukkit.WorldCreator;
+import org.bukkit.WorldType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -24,10 +27,38 @@ public class worldCreate implements CommandExecutor {
         }
 
         if (args == null) {
-
+            player.sendMessage(ChatColor.RED + "Please provide a name and a world type like Normal, Flat, ");
             return false;
         }
 
+        if (args[1] == null) {
+            player.sendMessage(ChatColor.RED + "Please provide a name for the world!");
+            return false;
+        }
+
+        String name = args[0].toLowerCase();
+        String type = args[1].toLowerCase();
+        WorldCreator wc = new WorldCreator(name);
+
+        if (type == "normal") {
+
+            wc.environment(World.Environment.NORMAL);
+            wc.type(WorldType.NORMAL);
+            wc.createWorld();
+
+            return false;
+
+        } else if (type == "flat") {
+
+            wc.environment(World.Environment.NORMAL);
+            wc.type(WorldType.FLAT);
+            wc.createWorld();
+
+            return false;
+
+        } else {
+            player.sendMessage(ChatColor.RED + "World types can only be Normal or Flat.");
+        }
 
         return false;
     }

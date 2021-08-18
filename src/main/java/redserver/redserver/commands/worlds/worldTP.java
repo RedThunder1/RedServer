@@ -47,6 +47,9 @@ public class worldTP implements CommandExecutor {
                 int z = world.getSpawnLocation().getBlockZ();
                 Location loc = new Location(world, x, y, z);
                 player1.teleport(loc);
+
+                return false;
+
             } else {
                 player.sendMessage(ChatColor.RED + "That is not an online player!");
             }
