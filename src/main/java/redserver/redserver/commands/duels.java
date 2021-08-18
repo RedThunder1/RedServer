@@ -1,4 +1,4 @@
-package redserver.redserver.commands.staffcommands;
+package redserver.redserver.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
