@@ -11,8 +11,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import redserver.redserver.RedMain;
 
-import static sun.security.krb5.SCDynamicStoreConfig.getConfig;
-
 public class hub implements CommandExecutor {
 
     private RedMain plugin;
@@ -21,7 +19,6 @@ public class hub implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "Only players can use this command!");

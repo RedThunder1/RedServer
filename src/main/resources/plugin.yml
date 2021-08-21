@@ -26,3 +26,9 @@ commands:
     description: Allows players to report other players!
   reports:
     description: Allows staff to see reports that were made!
+  wtp:
+    description: Allows staff to tp between worlds
+  wcreate:
+    description: Allows staff to create worlds
+  wdelete:
+    description: Allows staff to delete worlds

@@ -2,6 +2,7 @@ package redserver.redserver.smp.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,8 +34,12 @@ public class smptp implements CommandExecutor {
         }
 
         player.teleport(world.getSpawnLocation());
-
-        plugin.getServer().dispatchCommand(console, "mv tp " + player.getName() + " smp");
+        World smp = Bukkit.getWorld("smp");
+        int x = world.getSpawnLocation().getBlockX();
+        int y = world.getSpawnLocation().getBlockY();
+        int z = world.getSpawnLocation().getBlockZ();
+        Location loc = new Location(smp, x, y, z);
+        player.teleport(loc);
 
         return false;
     }

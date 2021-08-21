@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 import redserver.redserver.commands.*;
 import redserver.redserver.commands.report.Manager.ReportManager;
 import redserver.redserver.commands.report.PlayerReport;
@@ -17,11 +18,16 @@ import redserver.redserver.commands.staffcommands.heal;
 import redserver.redserver.commands.staffcommands.launch;
 import redserver.redserver.commands.staffcommands.skull;
 import redserver.redserver.commands.staffcommands.vanish.*;
+import redserver.redserver.commands.worlds.worldCreate;
+import redserver.redserver.commands.worlds.worldDelete;
+import redserver.redserver.commands.worlds.worldTP;
+import redserver.redserver.events.netherPortals;
 import redserver.redserver.events.worldprotection;
 import redserver.redserver.gson.gsonmanager;
 import redserver.redserver.smp.commands.home;
 import redserver.redserver.smp.commands.smptp;
 import redserver.redserver.events.onJoinEvent;
+import redserver.redserver.utilities.chatMesssages;
 
 import java.io.File;
 import java.util.HashMap;
@@ -36,7 +42,7 @@ public final class RedMain extends JavaPlugin {
     HashMap<UUID, Location> homeMap = new HashMap<>();
 
     //TODO: Fix reports menu.
-    //TODO: Create worl commands.
+    //TODO: Create world commands.
     //TODO: work on other minigames like kitpvp and duels.
     //TODO: tp players to their last pos in smp world.
 
@@ -48,6 +54,7 @@ public final class RedMain extends JavaPlugin {
         getServer().getConsoleSender().sendMessage(ChatColor.RED + "[!] RedSpigot Has been ENABLED [!]");
         loadHomes();
         loadManagers();
+        loadRunnables();
     }
 
     @Override
@@ -72,6 +79,9 @@ public final class RedMain extends JavaPlugin {
         this.getCommand("skull").setExecutor(new skull());
         this.getCommand("report").setExecutor(new PlayerReport(this));
         this.getCommand("reports").setExecutor(new Reports(this));
+        this.getCommand("wtp").setExecutor(new worldTP());
+        this.getCommand("wcreate").setExecutor(new worldCreate());
+        this.getCommand("wdelete").setExecutor(new worldDelete());
     }
 
     public void loadEvents() {
@@ -83,6 +93,7 @@ public final class RedMain extends JavaPlugin {
         pluginManager.registerEvents(new ReportsInfoEvent(this), this);
         pluginManager.registerEvents(new ReportsMenuEvent(this), this);
         pluginManager.registerEvents(new PlayerReportMenuEvent(this), this);
+        pluginManager.registerEvents(new netherPortals(), this);
     }
 
     public void loadHomes() {
@@ -102,6 +113,13 @@ public final class RedMain extends JavaPlugin {
 
     public ReportManager getReportManager() {
         return reportmanager;
+    }
+
+    public void loadRunnables() {
+        int sec = 20;
+        int minute = sec*60;
+        BukkitScheduler scheduler = this.getServer().getScheduler();
+        scheduler.runTaskTimer(this, new chatMesssages(this), 0, minute*5);
     }
 
 }
