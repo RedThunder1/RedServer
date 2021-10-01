@@ -12,9 +12,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import redserver.redserver.RedMain;
 
-public class onJoinEvent implements Listener {
+public class PlayerJoinActions implements Listener {
     private RedMain plugin;
-    public onJoinEvent(RedMain plugin) {this.plugin = plugin;}
+    public PlayerJoinActions(RedMain plugin) {this.plugin = plugin;}
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {

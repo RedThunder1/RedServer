@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
-public class pvp implements CommandExecutor {
+public class PVPTPCommand implements CommandExecutor {
 
     private RedMain plugin;
-    public pvp(RedMain plugin) {this.plugin = plugin;}
+    public PVPTPCommand(RedMain plugin) {this.plugin = plugin;}
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

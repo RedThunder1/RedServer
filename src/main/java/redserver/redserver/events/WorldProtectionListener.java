@@ -12,14 +12,14 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
-import redserver.redserver.commands.staffcommands.build;
+import redserver.redserver.commands.staffcommands.BuildCommand;
 
 import java.util.ArrayList;
 
 
-public class worldprotection implements Listener {
+public class WorldProtectionListener implements Listener {
 
-    public static ArrayList<Player> builder = build.build;
+    public static ArrayList<Player> builder = BuildCommand.build;
 
 
     @EventHandler

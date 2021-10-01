@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPortalEvent;
 
-public class netherPortals implements Listener {
+public class PortalTPManagement implements Listener {
 
     @EventHandler
     public void onPlayerPortal(PlayerPortalEvent event) {

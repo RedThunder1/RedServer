@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-public class duellistener implements Listener {
+public class DuelsListener implements Listener {
 
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();

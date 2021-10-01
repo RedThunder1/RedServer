@@ -2,10 +2,10 @@ package redserver.redserver.utilities;
 
 import redserver.redserver.RedMain;
 
-public class chatMesssages  implements Runnable {
+public class AnnouncementMessages implements Runnable {
 
     private RedMain plugin;
-    public chatMesssages(RedMain plugin) {this.plugin = plugin;}
+    public AnnouncementMessages(RedMain plugin) {this.plugin = plugin;}
 
     public int messageNumber = 0;
 
