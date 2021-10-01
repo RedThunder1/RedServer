@@ -1,6 +1,5 @@
 package redserver.redserver.commands.report;
 
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,8 +17,6 @@ public class PlayerReport implements CommandExecutor {
             sender.sendMessage(Messages.CONSOLECANTUSE);
             return false;
         }
-
-        Player player = (Player) sender;
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "Usage is /report PlayerName");

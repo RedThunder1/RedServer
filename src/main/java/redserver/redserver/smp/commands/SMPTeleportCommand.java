@@ -6,7 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 public class SMPTeleportCommand implements CommandExecutor {

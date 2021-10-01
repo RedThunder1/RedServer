@@ -1,6 +1,6 @@
 package redserver.redserver.smp.saveloc;
 
-public class saveloc {
+public class SaveSMPLocation {
 
 
 

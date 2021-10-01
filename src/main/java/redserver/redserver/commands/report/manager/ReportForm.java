@@ -1,4 +1,4 @@
-package redserver.redserver.commands.report.manager;
+package redserver.redserver.commands.report.Manager;
 
 import java.util.UUID;
 

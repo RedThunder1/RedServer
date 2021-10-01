@@ -1,6 +1,5 @@
 package redserver.redserver.commands.report.reports.ReportsMenu;
 
-
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -9,14 +8,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import redserver.redserver.RedMain;
-import redserver.redserver.commands.report.manager.ReportForm;
+import redserver.redserver.commands.report.Manager.ReportForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReportsGUI implements Listener {
-
-    private String id;
 
     public static void reports(Player player) {
         Inventory inventory = RedMain.get().getServer().createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Reports Menu");

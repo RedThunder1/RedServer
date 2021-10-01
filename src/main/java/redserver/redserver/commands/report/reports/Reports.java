@@ -1,12 +1,9 @@
 package redserver.redserver.commands.report.reports;
 
-
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import redserver.redserver.RedMain;
 import redserver.redserver.commands.report.reports.ReportsMenu.ReportsGUI;
 import redserver.redserver.utilities.Messages;
 

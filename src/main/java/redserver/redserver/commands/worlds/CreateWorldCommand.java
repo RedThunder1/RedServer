@@ -40,24 +40,20 @@ public class CreateWorldCommand implements CommandExecutor {
         String type = args[1].toLowerCase();
         WorldCreator wc = new WorldCreator(name);
 
-        if (type.equals("normal")) {
-
-            wc.environment(World.Environment.NORMAL);
-            wc.type(WorldType.NORMAL);
-            wc.createWorld();
-
-            return false;
-
-        } else if (type.equals("flat")) {
-
-            wc.environment(World.Environment.NORMAL);
-            wc.type(WorldType.FLAT);
-            wc.createWorld();
-
-            return false;
-
-        } else {
-            player.sendMessage(ChatColor.RED + "World types can only be Normal or Flat.");
+        switch (type) {
+            case "normal":
+                wc.environment(World.Environment.NORMAL);
+                wc.type(WorldType.NORMAL);
+                wc.createWorld();
+                break;
+            case "flat":
+                wc.environment(World.Environment.NORMAL);
+                wc.type(WorldType.FLAT);
+                wc.createWorld();
+                break;
+            default:
+                player.sendMessage(ChatColor.RED + "World types can only be normal or flat!");
+                break;
         }
 
         return false;

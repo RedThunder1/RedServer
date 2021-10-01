@@ -16,7 +16,6 @@ import redserver.redserver.commands.staffcommands.BuildCommand;
 
 import java.util.ArrayList;
 
-
 public class WorldProtectionListener implements Listener {
 
     public static ArrayList<Player> builder = BuildCommand.build;

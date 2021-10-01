@@ -1,10 +1,9 @@
 package redserver.redserver.commands.report.reports.InfoMenu;
 
 import redserver.redserver.RedMain;
-import redserver.redserver.commands.report.manager.ReportForm;
+import redserver.redserver.commands.report.Manager.ReportForm;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -17,7 +16,6 @@ public class ReportsInfoEvent implements Listener {
 
     @EventHandler
     public void invClick(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
         ItemStack item = event.getCurrentItem();
         Inventory inv = event.getClickedInventory();
 

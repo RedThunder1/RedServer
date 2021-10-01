@@ -7,9 +7,8 @@ import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import redserver.redserver.RedMain;
+import redserver.redserver.utilities.Messages;
 
 public class HubTPCommand implements CommandExecutor {
 
@@ -17,7 +16,7 @@ public class HubTPCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "Only players can use this command!");
+            sender.sendMessage(Messages.CONSOLECANTUSE);
             return false;
         }
         Player player = (Player) sender;
