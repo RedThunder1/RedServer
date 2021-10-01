@@ -1,6 +1,7 @@
 package redserver.redserver.commands.staffcommands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,8 +24,13 @@ public class SkullGiverCommand implements CommandExecutor {
             return false;
         }
 
+        if(args.length == 0) {
+            player.sendMessage(ChatColor.RED + "Please specify a player to get the skull of!");
+            return false;
+        }
+
         for (Player p : Bukkit.getOnlinePlayers()) {
-            if (args.equals(p)) {
+            if (args[0].equals(p.getName())) {
                 ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
                 SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
                 skullMeta.setOwningPlayer(p);

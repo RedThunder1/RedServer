@@ -28,7 +28,7 @@ public class SMPTeleportCommand implements CommandExecutor {
         }
         Player player = (Player) sender;
         World world = player.getWorld();
-        if (player.getWorld().getName() == "smp") {
+        if (player.getWorld().getName().equals("smp")) {
             player.sendMessage(ChatColor.RED + "You are already in this World!");
             return false;
         }

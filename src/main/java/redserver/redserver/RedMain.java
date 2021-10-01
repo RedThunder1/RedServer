@@ -35,9 +35,8 @@ import java.util.UUID;
 
 public final class RedMain extends JavaPlugin {
     public static RedMain plugin;
-    public static RedMain getInstance() {return plugin;}
     public static RedMain get() {return plugin;}
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
     public ReportManager reportmanager;
     HashMap<UUID, Location> homeMap = new HashMap<>();
 
