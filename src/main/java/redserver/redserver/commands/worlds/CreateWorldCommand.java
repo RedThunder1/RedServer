@@ -40,7 +40,7 @@ public class CreateWorldCommand implements CommandExecutor {
         String type = args[1].toLowerCase();
         WorldCreator wc = new WorldCreator(name);
 
-        if (type == "normal") {
+        if (type.equals("normal")) {
 
             wc.environment(World.Environment.NORMAL);
             wc.type(WorldType.NORMAL);
@@ -48,7 +48,7 @@ public class CreateWorldCommand implements CommandExecutor {
 
             return false;
 
-        } else if (type == "flat") {
+        } else if (type.equals("flat")) {
 
             wc.environment(World.Environment.NORMAL);
             wc.type(WorldType.FLAT);

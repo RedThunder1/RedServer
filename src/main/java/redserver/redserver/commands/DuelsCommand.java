@@ -22,11 +22,12 @@ public class DuelsCommand implements CommandExecutor {
         int id = 0;
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "Only players can use this command!");
+            return false;
         }
 
         Player player = (Player) sender;
 
-        if (args[0] == null) {
+        if (args.length == 0) {
             player.sendMessage(ChatColor.RED + "Put a players name to duel!");
         }
 
@@ -35,7 +36,7 @@ public class DuelsCommand implements CommandExecutor {
 
                 Player dueler = Bukkit.getPlayer(args[0]);
                 for (World world : Bukkit.getWorlds()) {
-                    if (world.toString() == "duel" + id) {
+                    if (world.toString().equals("duel" + id)) {
                         id++;
                         return true;
                     } else {

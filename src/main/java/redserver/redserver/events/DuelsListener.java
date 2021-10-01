@@ -12,7 +12,7 @@ public class DuelsListener implements Listener {
         Player player = event.getEntity();
         World world = player.getWorld();
 
-        if (world.getName().substring(0, 3) == "duel") {
+        if (world.getName().substring(0, 3).equals("duel")) {
 
 
 

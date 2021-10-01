@@ -20,6 +20,7 @@ public class BuildCommand implements CommandExecutor, Listener {
 
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + Messages.CONSOLECANTUSE);
+            return false;
         }
 
         Player player = (Player) sender;

@@ -26,18 +26,18 @@ public class WorldTPCommand implements CommandExecutor {
             return false;
         }
 
-        if (args == null) {
+        if (args == null || args.length == 0) {
             player.sendMessage(ChatColor.RED + "Please provide a world to teleport to!");
             return false;
         }
 
         String w = args[0];
         if (Bukkit.getWorld(w) == null) {
-            player.sendMessage(ChatColor.RED + "That is not a available world!");
+            player.sendMessage(ChatColor.RED + "That is not an available world!");
             return false;
         }
 
-        if (args[1] != null) {
+        if (args.length > 1) {
             String p = args[1];
             if (Bukkit.getPlayer(p) != null) {
                 World world = Bukkit.getWorld(w);

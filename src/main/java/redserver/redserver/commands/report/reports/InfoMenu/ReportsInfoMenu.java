@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import redserver.redserver.RedMain;
 import redserver.redserver.commands.report.manager.ReportForm;
@@ -81,8 +82,8 @@ public class ReportsInfoMenu implements Listener {
         Inventory inv = event.getClickedInventory();
         //if (event.getClickedInventory().get)
 
-        if (inv.equals(ChatColor.RED + "Player Report!")) {
-            if (item != null || item.getType() != Material.AIR) {
+        if (event.getView().getTitle().equals(ChatColor.RED + "Player Report!")) {
+            if (item != null && item.getType() != Material.AIR) {
                 event.setCancelled(true);
             }
         }
