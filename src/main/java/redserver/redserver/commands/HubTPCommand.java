@@ -11,10 +11,10 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import redserver.redserver.RedMain;
 
-public class hub implements CommandExecutor {
+public class HubTPCommand implements CommandExecutor {
 
     private RedMain plugin;
-    public hub(RedMain plugin) {this.plugin = plugin;}
+    public HubTPCommand(RedMain plugin) {this.plugin = plugin;}
 
 
     @Override

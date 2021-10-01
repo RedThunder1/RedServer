@@ -12,7 +12,7 @@ import redserver.redserver.utilities.Messages;
 
 import java.util.ArrayList;
 
-public class build implements CommandExecutor, Listener {
+public class BuildCommand implements CommandExecutor, Listener {
 
     public static ArrayList<Player> build = new ArrayList<>();
 

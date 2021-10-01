@@ -16,9 +16,9 @@ import redserver.redserver.utilities.Messages;
 
 import java.util.ArrayList;
 
-public class vanish implements CommandExecutor, Listener {
+public class VanishCommand implements CommandExecutor, Listener {
     private RedMain plugin;
-    public vanish(RedMain plugin) {this.plugin = plugin;}
+    public VanishCommand(RedMain plugin) {this.plugin = plugin;}
     public GameMode gamemode;
 
     public static ArrayList<Player> vanished = new ArrayList<Player>();

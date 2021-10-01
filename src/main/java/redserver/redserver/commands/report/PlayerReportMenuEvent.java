@@ -10,7 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import redserver.redserver.RedMain;
-import redserver.redserver.commands.report.Manager.ReportForm;
+import redserver.redserver.commands.report.manager.ReportForm;
 
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
 package redserver.redserver.commands.report.reports.InfoMenu;
 
 import redserver.redserver.RedMain;
-import redserver.redserver.commands.report.Manager.ReportForm;
+import redserver.redserver.commands.report.manager.ReportForm;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

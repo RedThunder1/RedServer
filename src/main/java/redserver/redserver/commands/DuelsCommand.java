@@ -13,7 +13,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class duels implements CommandExecutor {
+public class DuelsCommand implements CommandExecutor {
 
 
     @Override
