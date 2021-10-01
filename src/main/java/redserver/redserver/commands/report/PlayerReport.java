@@ -12,9 +12,6 @@ import redserver.redserver.utilities.Messages;
 
 public class PlayerReport implements CommandExecutor {
 
-    private RedMain plugin;
-    public PlayerReport(RedMain plugin) { this.plugin = plugin;}
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)){
@@ -29,15 +26,14 @@ public class PlayerReport implements CommandExecutor {
             return false;
         }
 
-        if (plugin.getServer().getPlayer(args[0]) == null) {
+        if (RedMain.get().getServer().getPlayer(args[0]) == null) {
             sender.sendMessage(ChatColor.RED + "That isn't an online player!");
             return false;
         }
 
-        Player toReport = plugin.getServer().getPlayer(args[0]);
+        Player toReport = RedMain.get().getServer().getPlayer(args[0]);
 
-        PlayerReportGui playerReportGui = new PlayerReportGui(plugin);
-        playerReportGui.reportGui((Player) sender, toReport.getPlayer().getName());
+        PlayerReportGui.reportGui((Player) sender, toReport.getPlayer().getName());
 
         sender.sendMessage(ChatColor.RED + "You have reported " + args[0] + "!");
 

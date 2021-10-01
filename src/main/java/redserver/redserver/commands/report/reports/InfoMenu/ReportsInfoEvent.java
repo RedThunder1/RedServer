@@ -15,9 +15,6 @@ import java.util.UUID;
 
 public class ReportsInfoEvent implements Listener {
 
-    private RedMain plugin;
-    public ReportsInfoEvent(RedMain plugin) {this.plugin = plugin;}
-
     @EventHandler
     public void invClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
@@ -26,11 +23,11 @@ public class ReportsInfoEvent implements Listener {
 
         if (event.getView().getTitle().equals(ChatColor.RED + "Player Report!")) {
             String id = ChatColor.stripColor(inv.getItem(0).getItemMeta().getLore().toString().substring(4));
-            ReportForm reportForms = plugin.getReportManager().getReportFormByID(UUID.fromString(ChatColor.stripColor(id.substring(4))));
+            ReportForm reportForms = RedMain.get().getReportManager().getReportFormByID(UUID.fromString(ChatColor.stripColor(id.substring(4))));
             if (item != null && item.getType() != Material.AIR) {
                 if (item.hasItemMeta()) {
                     if (item.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "Accept!")) {
-                        plugin.getReportManager().removeReport(new ReportForm(reportForms.getReporterName(), reportForms.getReporterName(), reportForms.getReason(), reportForms.getReportId()));
+                        RedMain.get().getReportManager().removeReport(new ReportForm(reportForms.getReporterName(), reportForms.getReporterName(), reportForms.getReason(), reportForms.getReportId()));
 
                     }
                 }

@@ -13,16 +13,10 @@ import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 public class PVPTPCommand implements CommandExecutor {
-
-    private RedMain plugin;
-    public PVPTPCommand(RedMain plugin) {this.plugin = plugin;}
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-
-
         if (!(sender instanceof Player)) {
             sender.sendMessage(Messages.CONSOLECANTUSE);
             return false;

@@ -15,11 +15,6 @@ import redserver.redserver.commands.report.manager.ReportForm;
 import java.util.UUID;
 
 public class PlayerReportMenuEvent implements Listener {
-
-    private RedMain plugin;
-    public PlayerReportMenuEvent(RedMain plugin) {this.plugin = plugin;}
-
-
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
 
@@ -32,7 +27,7 @@ public class PlayerReportMenuEvent implements Listener {
             event.setCancelled(true);
             String toReportName = openedInventory.getItem(0).getItemMeta().getDisplayName();
             String senderName = openedInventory.getItem(1).getItemMeta().getDisplayName();
-            Player toReport = plugin.getServer().getPlayer(toReportName);
+            Player toReport = RedMain.get().getServer().getPlayer(toReportName);
 
 
             if (itemstack.hasItemMeta()) {

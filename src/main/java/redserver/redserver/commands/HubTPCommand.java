@@ -13,10 +13,6 @@ import redserver.redserver.RedMain;
 
 public class HubTPCommand implements CommandExecutor {
 
-    private RedMain plugin;
-    public HubTPCommand(RedMain plugin) {this.plugin = plugin;}
-
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 

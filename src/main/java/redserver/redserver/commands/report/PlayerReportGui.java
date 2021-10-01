@@ -13,14 +13,9 @@ import redserver.redserver.RedMain;
 
 public class PlayerReportGui implements Listener {
 
-    private RedMain plugin;
-    public PlayerReportGui(RedMain plugin) {
-        this.plugin = plugin;
-    }
+    public static void reportGui(Player player,String toReportName) {
 
-    public void reportGui(Player player,String toReportName) {
-
-        Inventory inventory = plugin.getServer().createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Report Menu");
+        Inventory inventory = RedMain.get().getServer().createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Report Menu");
         for (int i = 0; i < 54; i++) {
             ItemStack blackGlass = new ItemStack(Material.GRAY_STAINED_GLASS, 1, (byte) 15);
             ItemMeta emptyMeta = blackGlass.getItemMeta();

@@ -19,15 +19,9 @@ import java.util.List;
 import java.util.UUID;
 
 public class ReportsInfoMenu implements Listener {
+    public static void playereport(String lore3, Player player) {
 
-    private RedMain plugin;
-    public ReportsInfoMenu(RedMain plugin) { this.plugin = plugin; }
-
-
-
-    public void playereport(String lore3, Player player) {
-
-        ReportForm reportForms = plugin.getReportManager().getReportFormByID(UUID.fromString(lore3.substring(4)));
+        ReportForm reportForms = RedMain.get().getReportManager().getReportFormByID(UUID.fromString(lore3.substring(4)));
 
         Inventory reports = Bukkit.createInventory(null, 54, ChatColor.RED + "Player Report!");
 
@@ -61,7 +55,7 @@ public class ReportsInfoMenu implements Listener {
         decline.setItemMeta(declineMeta);
         reports.setItem(32, decline);
 
-        plugin.getLogger().info(lore3);
+        RedMain.get().getLogger().info(lore3);
 
 
         ItemStack id = new ItemStack(Material.WHITE_WOOL);
