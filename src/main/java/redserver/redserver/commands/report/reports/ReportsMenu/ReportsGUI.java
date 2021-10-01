@@ -16,12 +16,10 @@ import java.util.List;
 
 public class ReportsGUI implements Listener {
 
-    private RedMain plugin;
-    public ReportsGUI(RedMain plugin) { this.plugin = plugin; }
     private String id;
 
-    public void Reports(Player player) {
-        Inventory inventory = plugin.getServer().createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Reports Menu");
+    public static void reports(Player player) {
+        Inventory inventory = RedMain.get().getServer().createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Reports Menu");
 
         for(ReportForm reportform : RedMain.get().getReportManager().reportForms) {
             ItemStack itemStack = new ItemStack(Material.REDSTONE_BLOCK);

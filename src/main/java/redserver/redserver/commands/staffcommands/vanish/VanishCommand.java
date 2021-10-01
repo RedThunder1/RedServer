@@ -17,11 +17,9 @@ import redserver.redserver.utilities.Messages;
 import java.util.ArrayList;
 
 public class VanishCommand implements CommandExecutor, Listener {
-    private RedMain plugin;
-    public VanishCommand(RedMain plugin) {this.plugin = plugin;}
     public GameMode gamemode;
 
-    public static ArrayList<Player> vanished = new ArrayList<Player>();
+    public static ArrayList<Player> vanished = new ArrayList<>();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -37,7 +35,7 @@ public class VanishCommand implements CommandExecutor, Listener {
 
         if (vanished.contains(player)) {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                p.showPlayer(plugin, player);
+                p.showPlayer(RedMain.get(), player);
                 player.setGameMode(gamemode);
             }
             vanished.remove(player);
@@ -45,7 +43,7 @@ public class VanishCommand implements CommandExecutor, Listener {
         } else {
             for (Player p: Bukkit.getOnlinePlayers()) {
                 gamemode = player.getGameMode();
-                p.hidePlayer(plugin, player);
+                p.hidePlayer(RedMain.get(), player);
                 player.setGameMode(GameMode.CREATIVE);
             }
             vanished.add(player);
@@ -57,7 +55,7 @@ public class VanishCommand implements CommandExecutor, Listener {
     public void onJoin(PlayerJoinEvent event) {
         for(Player player : Bukkit.getOnlinePlayers()) {
             if(vanished.contains(player)) {
-                event.getPlayer().hidePlayer(plugin, player);
+                event.getPlayer().hidePlayer(RedMain.get(), player);
             }
         }
     }

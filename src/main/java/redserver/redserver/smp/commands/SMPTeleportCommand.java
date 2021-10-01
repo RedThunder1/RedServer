@@ -13,10 +13,6 @@ import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 public class SMPTeleportCommand implements CommandExecutor {
-
-    private RedMain plugin;
-    public SMPTeleportCommand(RedMain plugin) {this.plugin = plugin;}
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 

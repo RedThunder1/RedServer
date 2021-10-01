@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public final class RedMain extends JavaPlugin {
-    public static RedMain plugin;
+    private static RedMain plugin;
     public static RedMain get() {return plugin;}
     private final Gson gson = new Gson();
     public ReportManager reportmanager;
@@ -48,6 +48,7 @@ public final class RedMain extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        plugin = this;
         loadCommands();
         loadEvents();
         getServer().getConsoleSender().sendMessage(ChatColor.RED + "[!] RedSpigot Has been ENABLED [!]");
@@ -68,16 +69,16 @@ public final class RedMain extends JavaPlugin {
     }
 
     public void loadCommands() {
-        this.getCommand("smp").setExecutor(new SMPTeleportCommand(this));
-        this.getCommand("hub").setExecutor(new HubTPCommand(this));
+        this.getCommand("smp").setExecutor(new SMPTeleportCommand());
+        this.getCommand("hub").setExecutor(new HubTPCommand());
         this.getCommand("home").setExecutor(new HomeCommand());
         this.getCommand("build").setExecutor(new BuildCommand());
-        this.getCommand("vanish").setExecutor(new VanishCommand(this));
+        this.getCommand("vanish").setExecutor(new VanishCommand());
         this.getCommand("heal").setExecutor(new HealCommand());
         this.getCommand("launch").setExecutor(new LaunchCommand());
         this.getCommand("skull").setExecutor(new SkullGiverCommand());
-        this.getCommand("report").setExecutor(new PlayerReport(this));
-        this.getCommand("reports").setExecutor(new Reports(this));
+        this.getCommand("report").setExecutor(new PlayerReport());
+        this.getCommand("reports").setExecutor(new Reports());
         this.getCommand("wtp").setExecutor(new WorldTPCommand());
         this.getCommand("wcreate").setExecutor(new CreateWorldCommand());
         this.getCommand("wdelete").setExecutor(new DeleteWorldCommand());
@@ -85,13 +86,13 @@ public final class RedMain extends JavaPlugin {
 
     public void loadEvents() {
         PluginManager pluginManager = this.getServer().getPluginManager();
-        pluginManager.registerEvents(new PlayerJoinActions(this), this);
+        pluginManager.registerEvents(new PlayerJoinActions(), this);
         pluginManager.registerEvents(new WorldProtectionListener(), this);
-        pluginManager.registerEvents(new VanishCommand(this), this);
-        pluginManager.registerEvents(new ReportsMenuEvent(this), this);
-        pluginManager.registerEvents(new ReportsInfoEvent(this), this);
-        pluginManager.registerEvents(new ReportsMenuEvent(this), this);
-        pluginManager.registerEvents(new PlayerReportMenuEvent(this), this);
+        pluginManager.registerEvents(new VanishCommand(), this);
+        pluginManager.registerEvents(new ReportsMenuEvent(), this);
+        pluginManager.registerEvents(new ReportsInfoEvent(), this);
+        pluginManager.registerEvents(new ReportsMenuEvent(), this);
+        pluginManager.registerEvents(new PlayerReportMenuEvent(), this);
         pluginManager.registerEvents(new PortalTPManagement(), this);
     }
 

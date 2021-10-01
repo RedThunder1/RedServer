@@ -12,9 +12,6 @@ import redserver.redserver.utilities.Messages;
 
 public class Reports implements CommandExecutor {
 
-    private RedMain plugin;
-    public Reports(RedMain plugin) {this.plugin = plugin;}
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -28,8 +25,7 @@ public class Reports implements CommandExecutor {
             return false;
         }
 
-        ReportsGUI reportsGui = new ReportsGUI(plugin);
-        reportsGui.Reports((Player) sender);
+        ReportsGUI.reports((Player) sender);
 
         return false;
     }
