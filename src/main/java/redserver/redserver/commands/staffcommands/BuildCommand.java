@@ -12,7 +12,7 @@ import redserver.redserver.utilities.Messages;
 
 import java.util.ArrayList;
 
-public class build implements CommandExecutor, Listener {
+public class BuildCommand implements CommandExecutor, Listener {
 
     public static ArrayList<Player> build = new ArrayList<>();
 
@@ -20,6 +20,7 @@ public class build implements CommandExecutor, Listener {
 
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + Messages.CONSOLECANTUSE);
+            return false;
         }
 
         Player player = (Player) sender;

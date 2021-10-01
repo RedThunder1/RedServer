@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import redserver.redserver.utilities.Messages;
 
-public class worldCreate implements CommandExecutor {
+public class CreateWorldCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -40,7 +40,7 @@ public class worldCreate implements CommandExecutor {
         String type = args[1].toLowerCase();
         WorldCreator wc = new WorldCreator(name);
 
-        if (type == "normal") {
+        if (type.equals("normal")) {
 
             wc.environment(World.Environment.NORMAL);
             wc.type(WorldType.NORMAL);
@@ -48,7 +48,7 @@ public class worldCreate implements CommandExecutor {
 
             return false;
 
-        } else if (type == "flat") {
+        } else if (type.equals("flat")) {
 
             wc.environment(World.Environment.NORMAL);
             wc.type(WorldType.FLAT);

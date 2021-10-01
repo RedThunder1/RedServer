@@ -9,11 +9,7 @@ import org.bukkit.entity.Player;
 import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
-public class smptp implements CommandExecutor {
-
-    private RedMain plugin;
-    public smptp(RedMain plugin) {this.plugin = plugin;}
-
+public class SMPTeleportCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -25,7 +21,7 @@ public class smptp implements CommandExecutor {
         }
         Player player = (Player) sender;
         World world = player.getWorld();
-        if (player.getWorld().getName() == "smp") {
+        if (player.getWorld().getName().equals("smp")) {
             player.sendMessage(ChatColor.RED + "You are already in this World!");
             return false;
         }

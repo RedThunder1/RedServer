@@ -11,11 +11,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import redserver.redserver.RedMain;
 
-public class hub implements CommandExecutor {
-
-    private RedMain plugin;
-    public hub(RedMain plugin) {this.plugin = plugin;}
-
+public class HubTPCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

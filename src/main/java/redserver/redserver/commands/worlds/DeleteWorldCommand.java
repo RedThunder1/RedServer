@@ -12,7 +12,7 @@ import redserver.redserver.utilities.Messages;
 
 import java.io.File;
 
-public class worldDelete implements CommandExecutor {
+public class DeleteWorldCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

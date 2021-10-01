@@ -9,24 +9,19 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import redserver.redserver.RedMain;
-import redserver.redserver.commands.report.Manager.ReportForm;
+import redserver.redserver.commands.report.manager.ReportForm;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class ReportsInfoMenu implements Listener {
+    public static void playereport(String lore3, Player player) {
 
-    private RedMain plugin;
-    public ReportsInfoMenu(RedMain plugin) { this.plugin = plugin; }
-
-
-
-    public void playereport(String lore3, Player player) {
-
-        ReportForm reportForms = plugin.getReportManager().getReportFormByID(UUID.fromString(lore3.substring(4)));
+        ReportForm reportForms = RedMain.get().getReportManager().getReportFormByID(UUID.fromString(lore3.substring(4)));
 
         Inventory reports = Bukkit.createInventory(null, 54, ChatColor.RED + "Player Report!");
 
@@ -60,7 +55,7 @@ public class ReportsInfoMenu implements Listener {
         decline.setItemMeta(declineMeta);
         reports.setItem(32, decline);
 
-        plugin.getLogger().info(lore3);
+        RedMain.get().getLogger().info(lore3);
 
 
         ItemStack id = new ItemStack(Material.WHITE_WOOL);
@@ -81,8 +76,8 @@ public class ReportsInfoMenu implements Listener {
         Inventory inv = event.getClickedInventory();
         //if (event.getClickedInventory().get)
 
-        if (inv.equals(ChatColor.RED + "Player Report!")) {
-            if (item != null || item.getType() != Material.AIR) {
+        if (event.getView().getTitle().equals(ChatColor.RED + "Player Report!")) {
+            if (item != null && item.getType() != Material.AIR) {
                 event.setCancelled(true);
             }
         }

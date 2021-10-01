@@ -16,9 +16,6 @@ import java.util.UUID;
 
 public class ReportsMenuEvent implements Listener {
 
-    private RedMain plugin;
-    public ReportsMenuEvent(RedMain plugin) {this.plugin = plugin;}
-
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
@@ -32,9 +29,8 @@ public class ReportsMenuEvent implements Listener {
                         if (event.getView().getTitle().equals(ChatColor.RED + "" + ChatColor.BOLD + "Reports Menu")) {
                             if (itemstack.getItemMeta().hasLore()) {
                                 //ReportForm reportForms = plugin.getReportManager().getReportFormByID(UUID.fromString(lore3.substring(4)));
-                                if(plugin.getReportManager().getReportFormByID(UUID.fromString(lore3.substring(4))) != null) {
-                                    ReportsInfoMenu reportsInfo = new ReportsInfoMenu(plugin);
-                                    reportsInfo.playereport(lore3, player);
+                                if(RedMain.get().getReportManager().getReportFormByID(UUID.fromString(lore3.substring(4))) != null) {
+                                    ReportsInfoMenu.playereport(lore3, player);
                                 }
                             }
                         }
