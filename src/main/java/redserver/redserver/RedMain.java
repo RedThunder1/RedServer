@@ -13,10 +13,7 @@ import redserver.redserver.commands.report.PlayerReportMenuEvent;
 import redserver.redserver.commands.report.reports.InfoMenu.ReportsInfoEvent;
 import redserver.redserver.commands.report.reports.Reports;
 import redserver.redserver.commands.report.reports.ReportsMenu.ReportsMenuEvent;
-import redserver.redserver.commands.staffcommands.build;
-import redserver.redserver.commands.staffcommands.heal;
-import redserver.redserver.commands.staffcommands.launch;
-import redserver.redserver.commands.staffcommands.skull;
+import redserver.redserver.commands.staffcommands.*;
 import redserver.redserver.commands.staffcommands.vanish.*;
 import redserver.redserver.commands.worlds.worldCreate;
 import redserver.redserver.commands.worlds.worldDelete;
@@ -94,6 +91,7 @@ public final class RedMain extends JavaPlugin {
         pluginManager.registerEvents(new ReportsMenuEvent(this), this);
         pluginManager.registerEvents(new PlayerReportMenuEvent(this), this);
         pluginManager.registerEvents(new netherPortals(), this);
+        pluginManager.registerEvents(new staffchat(), this);
     }
 
     public void loadHomes() {
