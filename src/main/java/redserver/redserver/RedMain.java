@@ -20,6 +20,7 @@ import redserver.redserver.commands.worlds.WorldTPCommand;
 import redserver.redserver.events.PlayerJoinActions;
 import redserver.redserver.events.WorldProtectionListener;
 import redserver.redserver.gson.GSONManager;
+import redserver.redserver.kitpvp.KitPvpTPCommand;
 import redserver.redserver.smp.commands.HomeCommand;
 import redserver.redserver.smp.commands.SMPTeleportCommand;
 import redserver.redserver.utilities.AnnouncementMessages;
@@ -78,6 +79,7 @@ public final class RedMain extends JavaPlugin {
         this.getCommand("wtp").setExecutor(new WorldTPCommand());
         this.getCommand("wcreate").setExecutor(new CreateWorldCommand());
         this.getCommand("wdelete").setExecutor(new DeleteWorldCommand());
+        this.getCommand("kitpvp").setExecutor(new KitPvpTPCommand());
     }
 
     public void loadEvents() {
