@@ -29,12 +29,8 @@ public class PlayerReport implements CommandExecutor {
         }
 
         Player toReport = RedMain.get().getServer().getPlayer(args[0]);
-
         PlayerReportGui.reportGui((Player) sender, toReport.getPlayer().getName());
-
         sender.sendMessage(ChatColor.RED + "You have reported " + args[0] + "!");
-
-
 
         return false;
     }

@@ -15,19 +15,27 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import redserver.redserver.commands.staffcommands.BuildCommand;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WorldProtectionListener implements Listener {
 
     public static ArrayList<Player> builder = BuildCommand.build;
+    public static ArrayList<String> worlds = new ArrayList<>();
 
+    public static void setWorlds() {
+        worlds.add("world");
+        worlds.add("kitpvp");
+    }
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        if (player.getWorld() == Bukkit.getWorld("world")) {
-            event.setCancelled(true);
-            if (builder.contains(player)) {
-                event.setCancelled(false);
+        World world = event.getBlock().getWorld();
+        for (int i = 0; i < worlds.size(); i++) {
+            if (world.equals(worlds.get(i))) {
+                if (!(builder.contains(player))) {
+                    event.setCancelled(true);
+                }
             }
         }
     }
@@ -35,25 +43,28 @@ public class WorldProtectionListener implements Listener {
     @EventHandler
     public void onPlace (BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        if (player.getWorld() == Bukkit.getWorld("world")) {
-            event.setCancelled(true);
-            if (builder.contains(player)) {
-                event.setCancelled(false);
+        World world = event.getBlock().getWorld();
+        for (int i = 0; i < worlds.size(); i++) {
+            if (world.equals(worlds.get(i))) {
+                if (!(builder.contains(player))) {
+                    event.setCancelled(true);
+                }
             }
         }
     }
 
     @EventHandler
     public void onItemDamage(PlayerItemDamageEvent event) {
-        Player player = event.getPlayer();
-        if (player.getWorld() == Bukkit.getWorld("world")) {
-            event.setCancelled(true);
+        World world = event.getPlayer().getWorld();
+        for (int i = 0; i < worlds.size(); i++) {
+            if (world.equals(worlds.get(i))) {
+                event.setCancelled(true);
+            }
         }
     }
 
     @EventHandler
     public void OnDamage(EntityDamageByEntityEvent event) {
-
         if(event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
             if (event.getDamager().getWorld() == Bukkit.getWorld("world")) {
                 event.setCancelled(true);
@@ -63,21 +74,22 @@ public class WorldProtectionListener implements Listener {
 
     @EventHandler
     public void pickUp(PlayerPickupItemEvent event) {
-        Player player = event.getPlayer();
-        if (player.getWorld() == Bukkit.getWorld("world")) {
-            event.setCancelled(true);
-            if (builder.contains(player)) {
-                event.setCancelled(false);
+        World world = event.getPlayer().getWorld();
+        for (int i = 0; i < worlds.size(); i++) {
+            if (world.equals(worlds.get(i))) {
+                event.setCancelled(true);
             }
         }
     }
 
     @EventHandler
     public void Mobs(CreatureSpawnEvent event) {
-        if (event.getEntity().getWorld() == Bukkit.getWorld("world")) {
-            event.setCancelled(true);
+        World world = event.getEntity().getWorld();
+        for (int i = 0; i < worlds.size(); i++) {
+            if (world.equals(worlds.get(i))) {
+                event.setCancelled(true);
+            }
         }
-
     }
 
     @EventHandler

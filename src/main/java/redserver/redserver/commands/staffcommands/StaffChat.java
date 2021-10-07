@@ -19,7 +19,7 @@ public class StaffChat implements Listener {
                 event.setCancelled(true);
                 for (Player staff : Bukkit.getOnlinePlayers()) {
                     if (staff.isOp()) {
-                        staff.sendMessage(ChatColor.RED + "[STAFF CHAT] " + player.getName() + msg1);
+                        staff.sendMessage(ChatColor.RED + "[STAFF CHAT] " + ChatColor.BLUE + player.getName() + ChatColor.GOLD + ": " + msg1);
                     }
                 }
             }

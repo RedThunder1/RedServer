@@ -4,15 +4,12 @@ import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import redserver.redserver.utilities.Messages;
 
 public class SMPTeleportCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
 
         if (!(sender instanceof Player)) {
             sender.sendMessage(Messages.CONSOLECANTUSE);
@@ -28,7 +25,7 @@ public class SMPTeleportCommand implements CommandExecutor {
         player.teleport(world.getSpawnLocation());
         World smp = Bukkit.getWorld("smp");
         Location loc = new Location(smp, 0, 77, 0);
-        if (player.getGameMode() == GameMode.ADVENTURE) {
+        if (player.getGameMode() != GameMode.SURVIVAL) {
             player.setGameMode(GameMode.SURVIVAL);
         }
         player.teleport(loc);

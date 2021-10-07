@@ -25,20 +25,25 @@ public class SkullGiverCommand implements CommandExecutor {
         }
 
         if(args.length == 0) {
-            player.sendMessage(ChatColor.RED + "Please specify a player to get the skull of!");
+            player.getInventory().addItem(getPlayerHead(player.getName()));
             return false;
         }
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (args[0].equals(p.getName())) {
-                ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
-                SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-                skullMeta.setOwningPlayer(p);
-
-                p.getInventory().addItem(skull);
+                player.getInventory().addItem(getPlayerHead(args[0]));
             }
         }
         return false;
     }
 
+    public ItemStack getPlayerHead(String player) {
+        Material type = Material.PLAYER_HEAD;
+        ItemStack item = new ItemStack(type, 1);
+        SkullMeta meta = (SkullMeta) item.getItemMeta();
+        meta.setOwner(player);
+        item.setItemMeta(meta);
+
+        return item;
+    }
 }

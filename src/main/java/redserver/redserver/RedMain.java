@@ -1,8 +1,7 @@
 package redserver.redserver;
 
 import com.google.gson.Gson;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -12,7 +11,7 @@ import redserver.redserver.commands.report.PlayerReportMenuEvent;
 import redserver.redserver.commands.report.reports.InfoMenu.ReportsInfoEvent;
 import redserver.redserver.commands.report.reports.Reports;
 import redserver.redserver.commands.report.reports.ReportsMenu.ReportsMenuEvent;
-import redserver.redserver.commands.report.Manager.*;
+import redserver.redserver.commands.report.manager.*;
 import redserver.redserver.commands.staffcommands.*;
 import redserver.redserver.commands.staffcommands.vanish.VanishCommand;
 import redserver.redserver.commands.worlds.CreateWorldCommand;
@@ -51,6 +50,7 @@ public final class RedMain extends JavaPlugin {
         loadHomes();
         loadManagers();
         loadRunnables();
+        WorldProtectionListener.setWorlds();
     }
 
     @Override
@@ -97,7 +97,7 @@ public final class RedMain extends JavaPlugin {
         String content = GSONManager.readFile(file);
         homeMap = gson.fromJson(content, HashMap.class);
     }
-
+     
     public void saveHomes() {
         String toPut = gson.toJson(homeMap);
         GSONManager.writeFile(new File("HomeStorage.json"), toPut);
@@ -115,7 +115,6 @@ public final class RedMain extends JavaPlugin {
         int sec = 20;
         int minute = sec*60;
         BukkitScheduler scheduler = this.getServer().getScheduler();
-        scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute*5);
+        scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute*10);
     }
-
 }

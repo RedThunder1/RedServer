@@ -8,7 +8,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import redserver.redserver.RedMain;
-import redserver.redserver.commands.report.Manager.ReportForm;
+import redserver.redserver.commands.report.manager.ReportForm;
 
 import java.util.ArrayList;
 import java.util.List;

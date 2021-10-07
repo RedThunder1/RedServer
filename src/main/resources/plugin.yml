@@ -32,3 +32,5 @@ commands:
     description: Allows staff to create worlds
   wdelete:
     description: Allows staff to delete worlds
+  kitpvp:
+    description: Teleports the player to the kitpvp world
