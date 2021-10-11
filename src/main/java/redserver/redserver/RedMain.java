@@ -21,11 +21,14 @@ import redserver.redserver.events.PlayerJoinActions;
 import redserver.redserver.events.WorldProtectionListener;
 import redserver.redserver.gson.GSONManager;
 import redserver.redserver.kitpvp.KitPvpTPCommand;
+import redserver.redserver.kitpvp.kitpvpmenu.KitCommand;
+import redserver.redserver.kitpvp.kitpvpmenu.KitPvpMenuAction;
 import redserver.redserver.smp.commands.HomeCommand;
 import redserver.redserver.smp.commands.SMPTeleportCommand;
 import redserver.redserver.utilities.AnnouncementMessages;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -52,6 +55,7 @@ public final class RedMain extends JavaPlugin {
         loadManagers();
         loadRunnables();
         WorldProtectionListener.setWorlds();
+        loadWorlds();
     }
 
     @Override
@@ -80,6 +84,7 @@ public final class RedMain extends JavaPlugin {
         this.getCommand("wcreate").setExecutor(new CreateWorldCommand());
         this.getCommand("wdelete").setExecutor(new DeleteWorldCommand());
         this.getCommand("kitpvp").setExecutor(new KitPvpTPCommand());
+        this.getCommand("kit").setExecutor(new KitCommand());
     }
 
     public void loadEvents() {
@@ -92,6 +97,7 @@ public final class RedMain extends JavaPlugin {
         pluginManager.registerEvents(new ReportsMenuEvent(), this);
         pluginManager.registerEvents(new PlayerReportMenuEvent(), this);
         pluginManager.registerEvents(new StaffChat(), this);
+        pluginManager.registerEvents(new KitPvpMenuAction(), this);
     }
 
     public void loadHomes() {
@@ -118,5 +124,17 @@ public final class RedMain extends JavaPlugin {
         int minute = sec*60;
         BukkitScheduler scheduler = this.getServer().getScheduler();
         scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute*10);
+    }
+
+    public void loadWorlds() {
+        ArrayList<String> worlds = new ArrayList<String>();
+        worlds.add("smp");
+        worlds.add("kitpvp");
+        worlds.add("pvp");
+        for (String world : worlds) {
+            WorldCreator worldCreator = new WorldCreator(world);
+            worldCreator.createWorld();
+        }
+
     }
 }

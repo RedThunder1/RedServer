@@ -22,7 +22,7 @@ public class ReportsGUI implements Listener {
             ItemStack itemStack = new ItemStack(Material.REDSTONE_BLOCK);
             ItemMeta itemMeta = itemStack.getItemMeta();
             itemMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Player Report!");
-            List<String> lore = new ArrayList<>();
+            List<String> lore = new ArrayList<String>();
             lore.add("Reporter: " + reportform.getReporterName());
             lore.add("Reported: " + reportform.getReportedName());
             lore.add("Reason: " + reportform.getReason());

@@ -1,5 +1,6 @@
 package redserver.redserver.commands.report;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,7 +14,7 @@ public class PlayerReportGui implements Listener {
 
     public static void reportGui(Player player,String toReportName) {
 
-        Inventory inventory = RedMain.get().getServer().createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Report Menu");
+        Inventory inventory = Bukkit.createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Report Menu");
         for (int i = 0; i < 54; i++) {
             ItemStack blackGlass = new ItemStack(Material.BLACK_STAINED_GLASS, 1);
             ItemMeta emptyMeta = blackGlass.getItemMeta();

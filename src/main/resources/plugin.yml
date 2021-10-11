@@ -1,7 +1,8 @@
 name: Redserver
-version: ${project.version}
+version: 1.0.1
 main: redserver.redserver.RedMain
 api-version: 1.16
+author: RedThunderSpartan
 
 commands:
   smp:
@@ -34,3 +35,5 @@ commands:
     description: Allows staff to delete worlds
   kitpvp:
     description: Teleports the player to the kitpvp world
+  kit:
+    description: Opens the kit menu

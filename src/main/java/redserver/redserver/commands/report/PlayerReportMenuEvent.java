@@ -26,7 +26,7 @@ public class PlayerReportMenuEvent implements Listener {
             event.setCancelled(true);
             String toReportName = openedInventory.getItem(0).getItemMeta().getDisplayName();
             String senderName = openedInventory.getItem(1).getItemMeta().getDisplayName();
-            Player toReport = RedMain.get().getServer().getPlayer(toReportName);
+            Player toReport = Bukkit.getPlayer(toReportName);
 
 
             if (itemstack.hasItemMeta()) {

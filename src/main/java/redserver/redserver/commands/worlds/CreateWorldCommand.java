@@ -53,11 +53,15 @@ public class CreateWorldCommand implements CommandExecutor {
                 wc.createWorld();
                 player.sendMessage(ChatColor.GREEN + "You have created a new flat world named " + name + "!");
                 break;
+            case "void":
+                wc.generator(new EmptyChunkGenerator());
+                wc.createWorld();
+                player.sendMessage(ChatColor.GREEN + "You have created a new empty world named " + name + "!");
+                break;
             default:
                 player.sendMessage(ChatColor.RED + "World types can only be normal or flat!");
                 break;
         }
-
         return false;
     }
 }
