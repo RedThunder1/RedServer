@@ -14,6 +14,7 @@ import redserver.redserver.commands.report.reports.ReportsMenu.ReportsMenuEvent;
 import redserver.redserver.commands.report.manager.*;
 import redserver.redserver.commands.staffcommands.*;
 import redserver.redserver.commands.staffcommands.vanish.VanishCommand;
+import redserver.redserver.commands.teleport.TPACommand;
 import redserver.redserver.commands.worlds.CreateWorldCommand;
 import redserver.redserver.commands.worlds.DeleteWorldCommand;
 import redserver.redserver.commands.worlds.WorldTPCommand;
@@ -43,7 +44,7 @@ public final class RedMain extends JavaPlugin {
     //TODO: Fix reports menu.
     //TODO: Create TP Commands
     //TODO: work on other minigames like kitpvp and duels.
-    //TODO: tp players to their last pos in smp world.
+    //TODO: Tp players to their last pos in smp world.
     //TODO: Finish saving homes and locations in smp.
 
 
@@ -86,6 +87,7 @@ public final class RedMain extends JavaPlugin {
         this.getCommand("wdelete").setExecutor(new DeleteWorldCommand());
         this.getCommand("kitpvp").setExecutor(new KitPvpTPCommand());
         this.getCommand("kit").setExecutor(new KitCommand());
+        this.getCommand("tpa").setExecutor(new TPACommand());
     }
 
     public void loadEvents() {
@@ -125,6 +127,8 @@ public final class RedMain extends JavaPlugin {
         int minute = sec*60;
         BukkitScheduler scheduler = this.getServer().getScheduler();
         scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute*10);
+        
+       
     }
 
     public void loadWorlds() {

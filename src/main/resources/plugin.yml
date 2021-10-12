@@ -37,3 +37,5 @@ commands:
     description: Teleports the player to the kitpvp world
   kit:
     description: Opens the kit menu
+  tpa:
+    description: Tpa command for players
