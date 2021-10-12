@@ -41,9 +41,10 @@ public final class RedMain extends JavaPlugin {
     public HashMap<UUID, Location> homeMap = new HashMap<>();
 
     //TODO: Fix reports menu.
-    //TODO: Create world commands.
+    //TODO: Create TP Commands
     //TODO: work on other minigames like kitpvp and duels.
     //TODO: tp players to their last pos in smp world.
+    //TODO: Finish saving homes and locations in smp.
 
 
     @Override
