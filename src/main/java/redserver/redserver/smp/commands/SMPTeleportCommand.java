@@ -1,10 +1,15 @@
 package redserver.redserver.smp.commands;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 public class SMPTeleportCommand implements CommandExecutor {
@@ -27,6 +32,12 @@ public class SMPTeleportCommand implements CommandExecutor {
         Location loc = new Location(smp, 0, 77, 0);
         if (player.getGameMode() != GameMode.SURVIVAL) {
             player.setGameMode(GameMode.SURVIVAL);
+        }
+        HashMap<UUID, Location> map = RedMain.get().homeMap;
+        if (map.containsKey(player.getUniqueId())) {
+        	Location location = (Location )map.get(player);
+        	player.teleport(location);
+        	return false;
         }
         player.teleport(loc);
 

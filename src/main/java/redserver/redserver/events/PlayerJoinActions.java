@@ -16,7 +16,14 @@ public class PlayerJoinActions implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.setJoinMessage(ChatColor.GREEN + "Welcome " + player.getName() + " to the server!");
+        
+        if (!(player.hasPlayedBefore())) {
+        	event.setJoinMessage(ChatColor.GREEN + "Welcome " + player.getName() + " to the server!");
+        } else {
+        	event.setJoinMessage(ChatColor.GREEN + player.getName() + " has joined the server for the first time!");
+        }
+        
+        
         World world = Bukkit.getWorld("world");
         Location location = new Location(world, -125.5, 70, 249.5);
         player.teleport(location);

@@ -2,6 +2,7 @@ package redserver.redserver;
 
 import com.google.gson.Gson;
 import org.bukkit.*;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -110,6 +111,10 @@ public final class RedMain extends JavaPlugin {
     }
      
     public void saveHomes() {
+    	for (Player player : Bukkit.getWorld("smp").getPlayers()) {
+    		homeMap.put(player.getUniqueId(), player.getLocation());
+    	}
+    	
         String toPut = gson.toJson(homeMap);
         GSONManager.writeFile(new File("HomeStorage.json"), toPut);
     }
@@ -124,7 +129,7 @@ public final class RedMain extends JavaPlugin {
 
     public void loadRunnables() {
         int sec = 20;
-        int minute = sec*60;
+        int minute = sec * 60;
         BukkitScheduler scheduler = this.getServer().getScheduler();
         scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute*10);
         

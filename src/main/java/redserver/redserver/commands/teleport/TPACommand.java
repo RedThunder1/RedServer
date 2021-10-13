@@ -13,7 +13,6 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.HashMap;
 
-import org.jetbrains.annotations.NotNull;
 import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
@@ -22,7 +21,7 @@ public class TPACommand implements CommandExecutor {
 	public HashMap<Player, Player> map = new HashMap<>();
 	public boolean tped = false;
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender,@NotNull Command cmd, @NotNull String label,@NotNull String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (!(sender instanceof Player)) {
 			sender.sendMessage(Messages.CONSOLECANTUSE);
 			return false;
@@ -34,6 +33,11 @@ public class TPACommand implements CommandExecutor {
 			player.sendMessage("Please provide a player name to teleport too!");
 			return false;
 		}
+		
+		if (!(player.getWorld().equals(Bukkit.getWorld("smp")))) {
+			player.sendMessage(ChatColor.RED + "You can only use this command in the Smp!");
+			return false;
+		}
 
 		if (args[0].equals(player.getName())) {
 			player.sendMessage(ChatColor.RED + "You cant tp to yourself!");
@@ -41,6 +45,11 @@ public class TPACommand implements CommandExecutor {
 		}
 		
 		for (Player p : Bukkit.getOnlinePlayers()) {
+			
+			if (!(p.getWorld().equals(Bukkit.getWorld("smp")))) {
+				player.sendMessage(ChatColor.RED + "You can't tp to this person!");
+				return false;
+			}
 			
 			if (args[0].toLowerCase().equals("accept")) {
 				player.sendMessage(ChatColor.GREEN + "Teleporting you to " + p.getName());
