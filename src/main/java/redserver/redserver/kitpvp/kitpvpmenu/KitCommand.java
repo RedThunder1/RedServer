@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import redserver.redserver.utilities.Messages;
 
 public class KitCommand implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 

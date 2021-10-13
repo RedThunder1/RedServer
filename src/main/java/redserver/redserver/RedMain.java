@@ -31,11 +31,11 @@ import redserver.redserver.utilities.AnnouncementMessages;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
 public final class RedMain extends JavaPlugin {
     public static RedMain plugin;
-    public static RedMain getInstance() {return plugin;}
     public static RedMain get() {return plugin;}
     private final Gson gson = new Gson();
     public ReportManager reportmanager;
@@ -72,22 +72,22 @@ public final class RedMain extends JavaPlugin {
     }
 
     public void loadCommands() {
-        this.getCommand("smp").setExecutor(new SMPTeleportCommand());
-        this.getCommand("hub").setExecutor(new HubTPCommand());
-        this.getCommand("home").setExecutor(new HomeCommand());
-        this.getCommand("build").setExecutor(new BuildCommand());
-        this.getCommand("vanish").setExecutor(new VanishCommand());
-        this.getCommand("heal").setExecutor(new HealCommand());
-        this.getCommand("launch").setExecutor(new LaunchCommand());
-        this.getCommand("skull").setExecutor(new SkullGiverCommand());
-        this.getCommand("report").setExecutor(new PlayerReport());
-        this.getCommand("reports").setExecutor(new Reports());
-        this.getCommand("wtp").setExecutor(new WorldTPCommand());
-        this.getCommand("wcreate").setExecutor(new CreateWorldCommand());
-        this.getCommand("wdelete").setExecutor(new DeleteWorldCommand());
-        this.getCommand("kitpvp").setExecutor(new KitPvpTPCommand());
-        this.getCommand("kit").setExecutor(new KitCommand());
-        this.getCommand("tpa").setExecutor(new TPACommand());
+        Objects.requireNonNull(this.getCommand("smp")).setExecutor(new SMPTeleportCommand());
+        Objects.requireNonNull(this.getCommand("hub")).setExecutor(new HubTPCommand());
+        Objects.requireNonNull(this.getCommand("home")).setExecutor(new HomeCommand());
+        Objects.requireNonNull(this.getCommand("build")).setExecutor(new BuildCommand());
+        Objects.requireNonNull(this.getCommand("vanish")).setExecutor(new VanishCommand());
+        Objects.requireNonNull(this.getCommand("heal")).setExecutor(new HealCommand());
+        Objects.requireNonNull(this.getCommand("launch")).setExecutor(new LaunchCommand());
+        Objects.requireNonNull(this.getCommand("skull")).setExecutor(new SkullGiverCommand());
+        Objects.requireNonNull(this.getCommand("report")).setExecutor(new PlayerReport());
+        Objects.requireNonNull(this.getCommand("reports")).setExecutor(new Reports());
+        Objects.requireNonNull(this.getCommand("wtp")).setExecutor(new WorldTPCommand());
+        Objects.requireNonNull(this.getCommand("wcreate")).setExecutor(new CreateWorldCommand());
+        Objects.requireNonNull(this.getCommand("wdelete")).setExecutor(new DeleteWorldCommand());
+        Objects.requireNonNull(this.getCommand("kitpvp")).setExecutor(new KitPvpTPCommand());
+        Objects.requireNonNull(this.getCommand("kit")).setExecutor(new KitCommand());
+        Objects.requireNonNull(this.getCommand("tpa")).setExecutor(new TPACommand());
     }
 
     public void loadEvents() {
@@ -132,7 +132,7 @@ public final class RedMain extends JavaPlugin {
     }
 
     public void loadWorlds() {
-        ArrayList<String> worlds = new ArrayList<String>();
+        ArrayList<String> worlds = new ArrayList<>();
         worlds.add("smp");
         worlds.add("kitpvp");
         worlds.add("pvp");

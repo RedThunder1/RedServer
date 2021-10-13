@@ -1,9 +1,6 @@
-package redserver.redserver.commands;
+package redserver.redserver.duel;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,7 +15,7 @@ public class DuelsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        World template = Bukkit.getWorld("pvptemp");
+        World template = Bukkit.getWorld("duel");
         int id = 0;
         if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "Only players can use this command!");
@@ -32,7 +29,7 @@ public class DuelsCommand implements CommandExecutor {
         }
 
         for (Player player1 : Bukkit.getOnlinePlayers()) {
-            if (args[0].contains(player1.toString())) {
+            if (args[0].contains(player1.getName())) {
 
                 Player dueler = Bukkit.getPlayer(args[0]);
                 for (World world : Bukkit.getWorlds()) {
@@ -41,10 +38,10 @@ public class DuelsCommand implements CommandExecutor {
                         return true;
                     } else {
                         copyWorld(template, "duel" + id);
+                        //Location location = new Location(Bukkit.getWorld("duel" + id), 0.5, 9, 0.5);
+
                     }
                 }
-
-
 
             } else {
                 player.sendMessage(ChatColor.RED + "That is not an online player!");

@@ -1,4 +1,4 @@
-package redserver.redserver.events;
+package redserver.redserver.duel;
 
 import org.bukkit.World;
 import org.bukkit.entity.Player;
