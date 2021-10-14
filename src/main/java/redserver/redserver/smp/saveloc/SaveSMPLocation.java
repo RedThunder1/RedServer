@@ -10,8 +10,18 @@ import org.bukkit.event.player.PlayerChangedWorldEvent;
 
 import redserver.redserver.RedMain;
 
-public class SaveSMPLocation implements Listener{
+public class SaveSMPLocation implements Listener, Runnable {
 
+	public void run() {
+		for (Player player : Bukkit.getWorld("smp").getPlayers()) {
+			if (RedMain.get().homeMap.containsKey(player.getUniqueId())) {
+				RedMain.get().homeMap.replace(player.getUniqueId(), player.getLocation());
+			} else {
+				RedMain.get().homeMap.put(player.getUniqueId(), player.getLocation());
+			}
+		}
+	}
+	
 	@EventHandler
 	public void smpLeave(PlayerChangedWorldEvent event) {
 		//Should save the players location after leaving the smp world
@@ -19,10 +29,11 @@ public class SaveSMPLocation implements Listener{
 		Player player = event.getPlayer();
 		if (fromWorld.equals(Bukkit.getWorld("smp"))) {
 			Location location = player.getLocation();
+			if (RedMain.get().homeMap.containsKey(player.getUniqueId())) {
+				RedMain.get().homeMap.replace(player.getUniqueId(), location);
+			} else {
 			RedMain.get().homeMap.put(player.getUniqueId(), location);
+			}
 		}
 	}
-	
-	public void onRestart(ServerRestartEvent event)
-
 }

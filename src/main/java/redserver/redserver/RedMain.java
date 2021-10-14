@@ -28,6 +28,8 @@ import redserver.redserver.kitpvp.kitpvpmenu.KitPvpMenuAction;
 import redserver.redserver.smp.commands.HomeCommand;
 import redserver.redserver.smp.commands.SMPTeleportCommand;
 import redserver.redserver.utilities.AnnouncementMessages;
+import redserver.redserver.utilities.ranks.Ranks;
+import redserver.redserver.smp.saveloc.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -40,12 +42,13 @@ public final class RedMain extends JavaPlugin {
     public static RedMain get() {return plugin;}
     private final Gson gson = new Gson();
     public ReportManager reportmanager;
+    public HashMap<UUID, Ranks>pranks = new HashMap<>();
     public HashMap<UUID, Location> homeMap = new HashMap<>();
 
     //TODO: Fix reports menu.
     //TODO: Create TP Commands
     //TODO: work on other minigames like kitpvp and duels.
-    //TODO: Tp players to their last pos in smp world.
+    //TODO: Teleport players to their last position in smp world.
     //TODO: Finish saving homes and locations in smp.
 
 
@@ -65,6 +68,7 @@ public final class RedMain extends JavaPlugin {
     public void onDisable() {
         getServer().getConsoleSender().sendMessage(ChatColor.RED + "[!] RedSpigot Has been DISABLED [!]");
         saveHomes();
+        saveRanks();
     }
 
     @Override
@@ -112,13 +116,25 @@ public final class RedMain extends JavaPlugin {
      
     public void saveHomes() {
     	for (Player player : Bukkit.getWorld("smp").getPlayers()) {
-    		homeMap.put(player.getUniqueId(), player.getLocation());
+    		if (homeMap.containsKey(player.getUniqueId())) {
+    			homeMap.replace(player.getUniqueId(), player.getLocation());
+    		} else {
+    			homeMap.put(player.getUniqueId(), player.getLocation());
+    		}
+    		
     	}
     	
         String toPut = gson.toJson(homeMap);
         GSONManager.writeFile(new File("HomeStorage.json"), toPut);
+        getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[!] Saved player locations [!]");
     }
-
+    
+    public void saveRanks() {
+    	String toPut = gson.toJson(pranks);
+    	GSONManager.writeFile(new File("PlayerRanks.json"), toPut);
+    	getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[!] Saved player ranks [!]");
+    }
+    
     public void loadManagers() {
         reportmanager = new ReportManager();
     }
@@ -132,8 +148,7 @@ public final class RedMain extends JavaPlugin {
         int minute = sec * 60;
         BukkitScheduler scheduler = this.getServer().getScheduler();
         scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute*10);
-        
-       
+        scheduler.runTaskTimer(this, new SaveSMPLocation(), 0, minute*5);
     }
 
     public void loadWorlds() {

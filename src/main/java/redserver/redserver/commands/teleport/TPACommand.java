@@ -22,6 +22,11 @@ public class TPACommand implements CommandExecutor {
 	public boolean tped = false;
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		
+		
+		//TODO: Clean up this class since it is a mess and probably doesn't work
+		
+		
 		if (!(sender instanceof Player)) {
 			sender.sendMessage(Messages.CONSOLECANTUSE);
 			return false;
@@ -52,6 +57,10 @@ public class TPACommand implements CommandExecutor {
 			}
 			
 			if (args[0].toLowerCase().equals("accept")) {
+				if (!(map.containsKey(player))) {
+					player.sendMessage(ChatColor.RED + "You do not have any tpa requests!");
+					return false;
+				}
 				player.sendMessage(ChatColor.GREEN + "Teleporting you to " + p.getName());
 				p.sendMessage(ChatColor.GREEN + "You accepted the tpa request!");
 				player.teleport(p);
@@ -59,6 +68,10 @@ public class TPACommand implements CommandExecutor {
 				tped = true;
 				return false;
 			} else if (args[0].toLowerCase().equals("deny")) {
+				if (!(map.containsKey(player))) {
+					player.sendMessage(ChatColor.RED + "You do not have any tpa requests!");
+					return false;
+				}
 				player.sendMessage(ChatColor.RED + p.getName() + " has denied your tpa request.");
 				p.sendMessage(ChatColor.RED + "You have denied " + player.getName() + " tpa request!");
 				map.remove(player, p);

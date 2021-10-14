@@ -14,7 +14,7 @@ public class AnnouncementMessages implements Runnable {
         messageNumber++;
         switch (messageNumber) {
             case 1:
-                plugin.getServer().broadcastMessage(Messages.DISCORD);
+                plugin.getServer().broadcastMessage(Messages.Discord());
                 break;
             case 2:
                 plugin.getServer().broadcastMessage(Messages.RULES);
