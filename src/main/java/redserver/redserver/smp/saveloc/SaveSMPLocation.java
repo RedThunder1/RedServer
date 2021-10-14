@@ -24,7 +24,7 @@ public class SaveSMPLocation implements Listener, Runnable {
 	
 	@EventHandler
 	public void smpLeave(PlayerChangedWorldEvent event) {
-		//Should save the players location after leaving the smp world
+		//Should save the players location after leaving the smp world though this needs testing
 		World fromWorld = event.getFrom();
 		Player player = event.getPlayer();
 		if (fromWorld.equals(Bukkit.getWorld("smp"))) {
@@ -32,7 +32,7 @@ public class SaveSMPLocation implements Listener, Runnable {
 			if (RedMain.get().homeMap.containsKey(player.getUniqueId())) {
 				RedMain.get().homeMap.replace(player.getUniqueId(), location);
 			} else {
-			RedMain.get().homeMap.put(player.getUniqueId(), location);
+				RedMain.get().homeMap.put(player.getUniqueId(), location);
 			}
 		}
 	}

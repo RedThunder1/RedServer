@@ -25,6 +25,7 @@ import redserver.redserver.gson.GSONManager;
 import redserver.redserver.kitpvp.KitPvpTPCommand;
 import redserver.redserver.kitpvp.kitpvpmenu.KitCommand;
 import redserver.redserver.kitpvp.kitpvpmenu.KitPvpMenuAction;
+import redserver.redserver.lobby.*;
 import redserver.redserver.smp.commands.HomeCommand;
 import redserver.redserver.smp.commands.SMPTeleportCommand;
 import redserver.redserver.utilities.AnnouncementMessages;
@@ -42,7 +43,7 @@ public final class RedMain extends JavaPlugin {
     public static RedMain get() {return plugin;}
     private final Gson gson = new Gson();
     public ReportManager reportmanager;
-    public HashMap<UUID, Ranks>pranks = new HashMap<>();
+    public HashMap<UUID, Ranks>pRanks = new HashMap<>();
     public HashMap<UUID, Location> homeMap = new HashMap<>();
 
     //TODO: Fix reports menu.
@@ -106,6 +107,8 @@ public final class RedMain extends JavaPlugin {
         pluginManager.registerEvents(new PlayerReportMenuEvent(), this);
         pluginManager.registerEvents(new StaffChat(), this);
         pluginManager.registerEvents(new KitPvpMenuAction(), this);
+        pluginManager.registerEvents(new GameSelector(), this);
+        pluginManager.registerEvents(new GameSelectorListener(), this);
     }
 
     public void loadHomes() {
@@ -130,7 +133,7 @@ public final class RedMain extends JavaPlugin {
     }
     
     public void saveRanks() {
-    	String toPut = gson.toJson(pranks);
+    	String toPut = gson.toJson(pRanks);
     	GSONManager.writeFile(new File("PlayerRanks.json"), toPut);
     	getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[!] Saved player ranks [!]");
     }

@@ -115,8 +115,6 @@ public class TPACommand implements CommandExecutor {
 				}.runTaskTimer(RedMain.plugin, 0, 20);
 			}
 		}
-		
 		return false;
 	}
-
 }

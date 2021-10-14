@@ -11,7 +11,7 @@ public class Messages {
     public static String Discord() {
         TextComponent message = new TextComponent( "https://discord.gg/syVRwcn");
         message.setClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, "https://discord.gg/syVRwcn"));
-        message.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "Join our Discord!" ).create() ) );
+        message.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "Join our Discord!" ).create()));
 		final String DISCORD = ChatColor.BLUE + "You can join our discord at " + message;
 		return DISCORD;
     }

@@ -33,9 +33,9 @@ public class SMPTeleportCommand implements CommandExecutor {
         if (player.getGameMode() != GameMode.SURVIVAL) {
             player.setGameMode(GameMode.SURVIVAL);
         }
-        HashMap<UUID, Location> map = RedMain.get().homeMap;
-        if (map.containsKey(player.getUniqueId())) {
-        	Location location = (Location )map.get(player);
+        
+        if (RedMain.get().homeMap.containsKey(player.getUniqueId())) {
+        	Location location = (Location )RedMain.get().homeMap.get(player.getUniqueId());
         	player.teleport(location);
         	return false;
         }
