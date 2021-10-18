@@ -48,4 +48,7 @@ public class ServerRanks {
 		}
 		return null;
 	}
+	public void createFakePlayer(Player player, String rank) {
+		fakePlayers.add(new FakePlayer(getRankByName(rank), player.getUniqueId()));
+	}
 }

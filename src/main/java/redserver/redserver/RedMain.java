@@ -188,12 +188,11 @@ public final class RedMain extends JavaPlugin {
     	return staff;
     }
     
-    
-    
-    
     //Temporary solution until i get Json files to work
     public void loadRanks() {
     	ranks.put("RedThunder117", "owner");
+    	UUID uuid = Bukkit.getPlayer("RedThunder117").getUniqueId();
+    	//this.getRankManager().createFakePlayer(this.getRankManager().getRankByName("owner"), uuid);
     }
     
     

@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import redserver.redserver.RedMain;
+import redserver.redserver.utilities.ranks.FakePlayer;
 
 public class PlayerJoinActions implements Listener {
 
@@ -26,6 +27,7 @@ public class PlayerJoinActions implements Listener {
         }
         
         if (!(RedMain.get().ranks.containsKey(player.getName()))) {
+        	RedMain.get().rankManager.createFakePlayer(player);
         	RedMain.get().ranks.put(player.getName(), "Member");
         }
         
