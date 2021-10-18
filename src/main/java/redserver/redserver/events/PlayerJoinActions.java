@@ -11,6 +11,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import redserver.redserver.RedMain;
+
 public class PlayerJoinActions implements Listener {
 
     @EventHandler
@@ -23,6 +25,9 @@ public class PlayerJoinActions implements Listener {
         	event.setJoinMessage(ChatColor.GREEN + player.getName() + " has joined the server for the first time!");
         }
         
+        if (!(RedMain.get().ranks.containsKey(player.getName()))) {
+        	RedMain.get().ranks.put(player.getName(), "Member");
+        }
         
         World world = Bukkit.getWorld("world");
         Location location = new Location(world, -125.5, 70, 249.5);

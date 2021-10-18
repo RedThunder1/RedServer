@@ -29,7 +29,9 @@ import redserver.redserver.lobby.*;
 import redserver.redserver.smp.commands.HomeCommand;
 import redserver.redserver.smp.commands.SMPTeleportCommand;
 import redserver.redserver.utilities.AnnouncementMessages;
+import redserver.redserver.utilities.ranks.FakePlayer;
 import redserver.redserver.utilities.ranks.Ranks;
+import redserver.redserver.utilities.ranks.ServerRanks;
 import redserver.redserver.smp.saveloc.*;
 
 import java.io.File;
@@ -43,8 +45,12 @@ public final class RedMain extends JavaPlugin {
     public static RedMain get() {return plugin;}
     private final Gson gson = new Gson();
     public ReportManager reportmanager;
+    public ServerRanks rankManager;
     public HashMap<UUID, Ranks>pRanks = new HashMap<>();
     public HashMap<UUID, Location> homeMap = new HashMap<>();
+    
+    //Temporary fix for ranks until i get Json files to work
+    public HashMap<String, String> ranks = new HashMap<>();
 
     //TODO: Fix reports menu.
     //TODO: Create TP Commands
@@ -61,6 +67,7 @@ public final class RedMain extends JavaPlugin {
         loadHomes();
         loadManagers();
         loadRunnables();
+        loadRanks();
         WorldProtectionListener.setWorlds();
         loadWorlds();
     }
@@ -140,6 +147,7 @@ public final class RedMain extends JavaPlugin {
     
     public void loadManagers() {
         reportmanager = new ReportManager();
+        rankManager = new ServerRanks();
     }
 
     public ReportManager getReportManager() {
@@ -165,4 +173,31 @@ public final class RedMain extends JavaPlugin {
         }
 
     }
+    
+    public ServerRanks getRankManager() {
+    	return rankManager;
+    }
+    
+    public boolean isStaff(Player player) { 
+    	boolean staff = false;
+    	String rank = ranks.get(player.getName());
+    	FakePlayer fakePlayer = getRankManager().getFakePlayer(player);
+    	if (fakePlayer.getPlayerRank().getPermLevel() >= 1) {
+    		staff = true;
+    	}
+    	return staff;
+    }
+    
+    
+    
+    
+    //Temporary solution until i get Json files to work
+    public void loadRanks() {
+    	ranks.put("RedThunder117", "owner");
+    }
+    
+    
 }
+
+
+
