@@ -9,6 +9,8 @@ import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
 import net.md_5.bungee.api.ChatColor;
+import redserver.redserver.RedMain;
+import redserver.redserver.utilities.ranks.Ranks;
 
 public class ScoreboardCreator {
 
@@ -17,7 +19,11 @@ public class ScoreboardCreator {
 		Scoreboard board = manager.getNewScoreboard();
 		Objective objective = board.registerNewObjective("dummy", ChatColor.RED + "" + ChatColor.BOLD + "Red's Server");
 		
-		
+		Team rank = board.registerNewTeam("rank");
+		String rankPrefix;
+		if (RedMain.get().ranks.containsKey(player.getName())) {
+			rankPrefix = RedMain.get().rankManager.getRank(player).getName();
+		}
 		
 		
 		

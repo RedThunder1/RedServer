@@ -37,6 +37,7 @@ import redserver.redserver.smp.saveloc.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -46,11 +47,11 @@ public final class RedMain extends JavaPlugin {
     private final Gson gson = new Gson();
     public ReportManager reportmanager;
     public ServerRanks rankManager;
-    public HashMap<UUID, Ranks>pRanks = new HashMap<>();
-    public HashMap<UUID, Location> homeMap = new HashMap<>();
+    public Map<UUID, Ranks>pRanks = new HashMap<>();
+    public Map<UUID, Location> homeMap = new HashMap<>();
     
     //Temporary fix for ranks until i get Json files to work
-    public HashMap<String, String> ranks = new HashMap<>();
+    public Map<String, String> ranks = new HashMap<>();
 
     //TODO: Fix reports menu.
     //TODO: Create TP Commands
@@ -191,8 +192,8 @@ public final class RedMain extends JavaPlugin {
     //Temporary solution until i get Json files to work
     public void loadRanks() {
     	ranks.put("RedThunder117", "owner");
-    	UUID uuid = Bukkit.getPlayer("RedThunder117").getUniqueId();
-    	//this.getRankManager().createFakePlayer(this.getRankManager().getRankByName("owner"), uuid);
+    	Player player = Bukkit.getPlayer("RedThunder117");
+    	this.getRankManager().createFakePlayer(player, "owner");
     }
     
     
