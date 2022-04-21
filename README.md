@@ -1,3 +1,7 @@
+#CURRENT STATE
+As of now there isnt a server but I do have plans to possibly remake the server and get it up and running sometime soon.
+
+
 # RedServer Info
 This is a project for my mineraft server
 If your interested in joining the ip is 51.81.29.23:25586 and the version is 1.17.1
