@@ -1,4 +1,4 @@
-#CURRENT STATE
+# CURRENT STATE
 As of now there isnt a server but I do have plans to possibly remake the server and get it up and running sometime soon.
 
 
