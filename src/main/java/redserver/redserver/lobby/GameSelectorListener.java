@@ -1,8 +1,6 @@
 package redserver.redserver.lobby;
 
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.libs.org.apache.commons.lang3.concurrent.EventCountCircuitBreaker;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

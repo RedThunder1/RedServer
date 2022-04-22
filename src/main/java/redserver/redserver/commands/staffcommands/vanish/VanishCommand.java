@@ -23,15 +23,18 @@ public class VanishCommand implements CommandExecutor, Listener {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(Messages.CONSOLECANTUSE);
-            return false;
-        }
+
+
         Player player = (Player) sender;
-        if (!(player.isOp())) {
-            sender.sendMessage(Messages.NOPERMS);
+        if (RedMain.get().playerCheck(player) == false) {
+             player.sendMessage(Messages.NOTAPLAYER);
+             return false;
+         }
+        if (RedMain.get().opCheck(player) == false) {
+            player.sendMessage(Messages.NOPERMS);
             return false;
         }
+
 
         if (vanished.contains(player)) {
             for (Player p : Bukkit.getOnlinePlayers()) {
@@ -43,7 +46,7 @@ public class VanishCommand implements CommandExecutor, Listener {
         } else {
             for (Player p: Bukkit.getOnlinePlayers()) {
                 gamemode = player.getGameMode();
-                p.hidePlayer(RedMain.get(), player);
+                p.hidePlayer(RedMain.plugin, player);
                 player.setGameMode(GameMode.CREATIVE);
             }
             vanished.add(player);

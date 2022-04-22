@@ -44,6 +44,7 @@ import java.util.UUID;
 public final class RedMain extends JavaPlugin {
     public static RedMain plugin;
     public static RedMain get() {return plugin;}
+    public RedMain getInstance() {return plugin;}
     private final Gson gson = new Gson();
     public ReportManager reportmanager;
     public ServerRanks rankManager;
@@ -62,13 +63,14 @@ public final class RedMain extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        plugin = this;
         loadCommands();
         loadEvents();
         getServer().getConsoleSender().sendMessage(ChatColor.RED + "[!] RedSpigot Has been ENABLED [!]");
-        loadHomes();
+        //loadHomes();
         loadManagers();
         loadRunnables();
-        loadRanks();
+        //loadRanks();
         WorldProtectionListener.setWorlds();
         loadWorlds();
     }
@@ -76,8 +78,8 @@ public final class RedMain extends JavaPlugin {
     @Override
     public void onDisable() {
         getServer().getConsoleSender().sendMessage(ChatColor.RED + "[!] RedSpigot Has been DISABLED [!]");
-        saveHomes();
-        saveRanks();
+        //saveHomes();
+        //saveRanks();
     }
 
     @Override
@@ -194,6 +196,22 @@ public final class RedMain extends JavaPlugin {
     	ranks.put("RedThunder117", "owner");
     	Player player = Bukkit.getPlayer("RedThunder117");
     	this.getRankManager().createFakePlayer(player, "owner");
+    }
+
+    public boolean playerCheck(Player player) {
+        if (player instanceof Player) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean opCheck(Player player) {
+        if (player.isOp()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     
