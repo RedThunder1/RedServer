@@ -8,21 +8,16 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 public class PVPTPCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(Messages.CONSOLECANTUSE);
-            return false;
-        }
-
+        if (!(RedMain.get().playerCheck(sender))) { return false; }
         Player player = (Player) sender;
-        if (!(player.isOp())) {
-            sender.sendMessage(Messages.NOPERMS);
-        }
         World world = Bukkit.getWorld("pvp");
         Location location = new Location(world, -125.5, 69, 249.5);
 

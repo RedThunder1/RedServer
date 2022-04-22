@@ -26,11 +26,11 @@ public class VanishCommand implements CommandExecutor, Listener {
 
 
         Player player = (Player) sender;
-        if (RedMain.get().playerCheck(player) == false) {
+        if (!(RedMain.get().playerCheck(player))) {
              player.sendMessage(Messages.NOTAPLAYER);
              return false;
          }
-        if (RedMain.get().opCheck(player) == false) {
+        if (!(RedMain.get().opCheck(player))) {
             player.sendMessage(Messages.NOPERMS);
             return false;
         }
@@ -46,7 +46,7 @@ public class VanishCommand implements CommandExecutor, Listener {
         } else {
             for (Player p: Bukkit.getOnlinePlayers()) {
                 gamemode = player.getGameMode();
-                p.hidePlayer(RedMain.plugin, player);
+                p.hidePlayer(RedMain.get(), player);
                 player.setGameMode(GameMode.CREATIVE);
             }
             vanished.add(player);

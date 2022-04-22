@@ -56,7 +56,7 @@ public class TPACommand implements CommandExecutor {
 				return false;
 			}
 			
-			if (args[0].toLowerCase().equals("accept")) {
+			if (args[0].equalsIgnoreCase("accept")) {
 				if (!(map.containsKey(player))) {
 					player.sendMessage(ChatColor.RED + "You do not have any tpa requests!");
 					return false;
@@ -67,7 +67,7 @@ public class TPACommand implements CommandExecutor {
 				map.remove(player, p);
 				tped = true;
 				return false;
-			} else if (args[0].toLowerCase().equals("deny")) {
+			} else if (args[0].equalsIgnoreCase("deny")) {
 				if (!(map.containsKey(player))) {
 					player.sendMessage(ChatColor.RED + "You do not have any tpa requests!");
 					return false;
@@ -112,7 +112,7 @@ public class TPACommand implements CommandExecutor {
                             time[0]--;
                         }
 					}
-				}.runTaskTimer(RedMain.plugin, 0, 20);
+				}.runTaskTimer(RedMain.get(), 0, 20);
 			}
 		}
 		return false;

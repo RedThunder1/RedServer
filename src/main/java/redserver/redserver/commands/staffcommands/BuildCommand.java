@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class BuildCommand implements CommandExecutor, Listener {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!(sender instanceof Player)) {
+        if (!(RedMain.get().playerCheck(sender))) {
             sender.sendMessage(ChatColor.RED + Messages.CONSOLECANTUSE);
             return false;
         }

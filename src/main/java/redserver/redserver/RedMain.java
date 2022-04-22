@@ -2,6 +2,7 @@ package redserver.redserver;
 
 import com.google.gson.Gson;
 import org.bukkit.*;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,17 +43,16 @@ import java.util.Objects;
 import java.util.UUID;
 
 public final class RedMain extends JavaPlugin {
-    public static RedMain plugin;
+    private static RedMain plugin;
     public static RedMain get() {return plugin;}
-    public RedMain getInstance() {return plugin;}
     private final Gson gson = new Gson();
-    public ReportManager reportmanager;
-    public ServerRanks rankManager;
-    public Map<UUID, Ranks>pRanks = new HashMap<>();
-    public Map<UUID, Location> homeMap = new HashMap<>();
+    private ReportManager reportmanager;
+    private ServerRanks rankManager;
+    private Map<UUID, Ranks>pRanks = new HashMap<>();
+    private Map<UUID, Location> homeMap = new HashMap<>();
     
     //Temporary fix for ranks until i get Json files to work
-    public Map<String, String> ranks = new HashMap<>();
+    private Map<String, String> ranks = new HashMap<>();
 
     //TODO: Fix reports menu.
     //TODO: Create TP Commands
@@ -67,10 +67,10 @@ public final class RedMain extends JavaPlugin {
         loadCommands();
         loadEvents();
         getServer().getConsoleSender().sendMessage(ChatColor.RED + "[!] RedSpigot Has been ENABLED [!]");
-        //loadHomes();
+        loadHomes();
         loadManagers();
         loadRunnables();
-        //loadRanks();
+        loadRanks();
         WorldProtectionListener.setWorlds();
         loadWorlds();
     }
@@ -78,8 +78,8 @@ public final class RedMain extends JavaPlugin {
     @Override
     public void onDisable() {
         getServer().getConsoleSender().sendMessage(ChatColor.RED + "[!] RedSpigot Has been DISABLED [!]");
-        //saveHomes();
-        //saveRanks();
+        saveHomes();
+        saveRanks();
     }
 
     @Override
@@ -158,11 +158,11 @@ public final class RedMain extends JavaPlugin {
     }
 
     public void loadRunnables() {
-        int sec = 20;
-        int minute = sec * 60;
+        long sec = 20;
+        long minute = sec * 60;
         BukkitScheduler scheduler = this.getServer().getScheduler();
-        scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute*10);
-        scheduler.runTaskTimer(this, new SaveSMPLocation(), 0, minute*5);
+        scheduler.runTaskTimer(this, new AnnouncementMessages(this), 0, minute * 10);
+        scheduler.runTaskTimer(this, new SaveSMPLocation(), 0, minute * 5);
     }
 
     public void loadWorlds() {
@@ -183,7 +183,6 @@ public final class RedMain extends JavaPlugin {
     
     public boolean isStaff(Player player) { 
     	boolean staff = false;
-    	String rank = ranks.get(player.getName());
     	FakePlayer fakePlayer = getRankManager().getFakePlayer(player);
     	if (fakePlayer.getPlayerRank().getPermLevel() >= 1) {
     		staff = true;
@@ -198,20 +197,12 @@ public final class RedMain extends JavaPlugin {
     	this.getRankManager().createFakePlayer(player, "owner");
     }
 
-    public boolean playerCheck(Player player) {
-        if (player instanceof Player) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean playerCheck(CommandSender sender) {
+        return sender instanceof Player;
     }
 
     public boolean opCheck(Player player) {
-        if (player.isOp()) {
-            return true;
-        } else {
-            return false;
-        }
+        return player.isOp();
     }
     
     

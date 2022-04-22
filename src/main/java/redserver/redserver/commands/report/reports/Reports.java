@@ -4,6 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import redserver.redserver.RedMain;
 import redserver.redserver.commands.report.reports.ReportsMenu.ReportsGUI;
 import redserver.redserver.utilities.Messages;
 
@@ -12,12 +14,9 @@ public class Reports implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!(sender instanceof Player)){
-            sender.sendMessage(Messages.CONSOLECANTUSE);
-            return false;
-        }
+        if (!(RedMain.get().playerCheck(sender))) {	return false; }
         Player player = (Player) sender;
-        if (!(player.isOp())) {
+        if (!(RedMain.get().opCheck(player))) {
             player.sendMessage(Messages.NOPERMS);
             return false;
         }
