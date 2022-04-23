@@ -10,10 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-
 import redserver.redserver.RedMain;
-import redserver.redserver.scoreboard.ScoreboardCreator;
-import redserver.redserver.utilities.ranks.FakePlayer;
 
 public class PlayerJoinActions implements Listener {
 
@@ -27,20 +24,26 @@ public class PlayerJoinActions implements Listener {
 			event.setJoinMessage(ChatColor.GREEN + player.getName() + " has joined the server for the first time!");
 		}
 
-		/*
-		if (!(RedMain.get().ranks.containsKey(player.getName()))) {
-			RedMain.get().rankManager.createFakePlayer(player, "member");
-			RedMain.get().ranks.put(player.getName(), "member");
+		if (RedMain.get().getRanks() != null) {
+			if (!(RedMain.get().getRanks().containsKey(player.getName()))) {
+				RedMain.get().getRankManager().createFakePlayer(player, "member");
+				RedMain.get().getRanks().put(player.getName(), "member");
+			}
 		}
-		 */
+
+
+
 
 		World world = Bukkit.getWorld("world");
-		Location location = new Location(world, -125.5, 70, 249.5);
+		Location location = new Location(world, 0.5, 71, 0.5);
 		player.teleport(location);
 		player.setHealth(20);
-		player.setPlayerListName(RedMain.get().rankManager.getRank(player).getName() + " " + player.getName());
+		/*
+		player.setPlayerListName(RedMain.get().getRankManager().getRank(player).getName() + " " + player.getName());
 		ScoreboardCreator scoreboard = new ScoreboardCreator();
 		scoreboard.scoreboard(player);
+
+		 */
 	}
 
 	@EventHandler
@@ -53,7 +56,7 @@ public class PlayerJoinActions implements Listener {
 	public void onDeath(PlayerDeathEvent event) {
 		Player player = event.getEntity();
 		World world = Bukkit.getWorld("world");
-		Location location = new Location(world, -125.5, 70, 249.5);
+		Location location = new Location(world, 0.5, 71, 0.5);
 		if (player.getWorld() == Bukkit.getWorld("world")) {
 			player.teleport(location);
 		}

@@ -15,11 +15,12 @@ import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VanishCommand implements CommandExecutor, Listener {
     public GameMode gamemode;
 
-    public static ArrayList<Player> vanished = new ArrayList<>();
+    public static List<Player> vanished = new ArrayList<>();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

@@ -6,11 +6,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import redserver.redserver.utilities.Messages;
 
 public class LaunchCommand implements CommandExecutor {
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, String label, String[] args) {
         if (label.equalsIgnoreCase("launch")) {
             if (!(sender instanceof Player)) {
                 sender.sendMessage(Messages.CONSOLECANTUSE);

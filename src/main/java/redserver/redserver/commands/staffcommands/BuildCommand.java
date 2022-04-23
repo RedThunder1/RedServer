@@ -9,16 +9,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import org.jetbrains.annotations.NotNull;
 import redserver.redserver.RedMain;
 import redserver.redserver.utilities.Messages;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BuildCommand implements CommandExecutor, Listener {
 
-    public static ArrayList<Player> build = new ArrayList<>();
+    public static List<Player> build = new ArrayList<>();
 
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
 
         if (!(RedMain.get().playerCheck(sender))) {
             sender.sendMessage(ChatColor.RED + Messages.CONSOLECANTUSE);

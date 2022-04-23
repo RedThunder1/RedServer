@@ -14,10 +14,10 @@ public class SaveSMPLocation implements Listener, Runnable {
 
 	public void run() {
 		for (Player player : Bukkit.getWorld("smp").getPlayers()) {
-			if (RedMain.get().homeMap.containsKey(player.getUniqueId())) {
-				RedMain.get().homeMap.replace(player.getUniqueId(), player.getLocation());
+			if (RedMain.get().getHomes().containsKey(player.getUniqueId())) {
+				RedMain.get().getHomes().replace(player.getUniqueId(), player.getLocation());
 			} else {
-				RedMain.get().homeMap.put(player.getUniqueId(), player.getLocation());
+				RedMain.get().getHomes().put(player.getUniqueId(), player.getLocation());
 			}
 		}
 	}
@@ -29,10 +29,10 @@ public class SaveSMPLocation implements Listener, Runnable {
 		Player player = event.getPlayer();
 		if (fromWorld.equals(Bukkit.getWorld("smp"))) {
 			Location location = player.getLocation();
-			if (RedMain.get().homeMap.containsKey(player.getUniqueId())) {
-				RedMain.get().homeMap.replace(player.getUniqueId(), location);
+			if (RedMain.get().getHomes().containsKey(player.getUniqueId())) {
+				RedMain.get().getHomes().replace(player.getUniqueId(), location);
 			} else {
-				RedMain.get().homeMap.put(player.getUniqueId(), location);
+				RedMain.get().getHomes().put(player.getUniqueId(), location);
 			}
 		}
 	}

@@ -49,8 +49,7 @@ public final class RedMain extends JavaPlugin {
     private ReportManager reportmanager;
     private ServerRanks rankManager;
     private Map<UUID, Ranks>pRanks = new HashMap<>();
-    private Map<UUID, Location> homeMap = new HashMap<>();
-    
+    private HashMap<UUID, Location> homeMap = new HashMap<>();
     //Temporary fix for ranks until i get Json files to work
     private Map<String, String> ranks = new HashMap<>();
 
@@ -70,8 +69,7 @@ public final class RedMain extends JavaPlugin {
         loadHomes();
         loadManagers();
         loadRunnables();
-        loadRanks();
-        WorldProtectionListener.setWorlds();
+        //loadRanks();
         loadWorlds();
     }
 
@@ -153,9 +151,17 @@ public final class RedMain extends JavaPlugin {
         rankManager = new ServerRanks();
     }
 
+
+
     public ReportManager getReportManager() {
         return reportmanager;
     }
+    public ServerRanks getRankManager() { return rankManager; }
+    public Map<UUID, Ranks> getPRanks() { return pRanks; }
+    public Map<String, String> getRanks() { return ranks; }
+    public Map<UUID, Location> getHomes() { return homeMap;}
+
+
 
     public void loadRunnables() {
         long sec = 20;
@@ -177,9 +183,7 @@ public final class RedMain extends JavaPlugin {
 
     }
     
-    public ServerRanks getRankManager() {
-    	return rankManager;
-    }
+
     
     public boolean isStaff(Player player) { 
     	boolean staff = false;

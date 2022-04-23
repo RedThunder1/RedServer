@@ -14,13 +14,13 @@ public class AnnouncementMessages implements Runnable {
         messageNumber++;
         switch (messageNumber) {
             case 1:
-                plugin.getServer().broadcastMessage(Messages.Discord());
+                plugin.getServer().spigot().broadcast(Messages.Discord());
                 break;
             case 2:
                 plugin.getServer().broadcastMessage(Messages.RULES);
                 break;
             case 3:
-                plugin.getServer().broadcastMessage(Messages.TEBEX);
+                plugin.getServer().spigot().broadcast(Messages.Tebex());
                 break;
             case 4:
                 plugin.getServer().broadcastMessage(Messages.WELCOME);

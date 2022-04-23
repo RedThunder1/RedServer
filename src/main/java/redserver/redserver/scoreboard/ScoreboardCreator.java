@@ -21,8 +21,8 @@ public class ScoreboardCreator {
 		
 		Team rank = board.registerNewTeam("rank");
 		String rankPrefix;
-		if (RedMain.get().ranks.containsKey(player.getName())) {
-			rankPrefix = RedMain.get().rankManager.getRank(player).getName();
+		if (RedMain.get().getRanks().containsKey(player.getName())) {
+			rankPrefix = RedMain.get().getRankManager().getRank(player).getName();
 		}
 		
 		
