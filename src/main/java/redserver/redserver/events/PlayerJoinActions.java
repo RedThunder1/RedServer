@@ -10,7 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import redserver.redserver.RedMain;
+import org.bukkit.inventory.ItemStack;
+import redserver.redserver.lobby.GameSelector;
 
 public class PlayerJoinActions implements Listener {
 
@@ -24,14 +25,11 @@ public class PlayerJoinActions implements Listener {
 			event.setJoinMessage(ChatColor.GREEN + player.getName() + " has joined the server for the first time!");
 		}
 
-		if (RedMain.get().getRanks() != null) {
-			if (!(RedMain.get().getRanks().containsKey(player.getName()))) {
-				RedMain.get().getRankManager().createFakePlayer(player, "member");
-				RedMain.get().getRanks().put(player.getName(), "member");
-			}
+
+		ItemStack gameSelector = GameSelector.getGameSelector();
+		if (!(player.getInventory().contains(gameSelector))) {
+			player.getInventory().setItem(1, gameSelector);
 		}
-
-
 
 
 		World world = Bukkit.getWorld("world");
@@ -42,6 +40,13 @@ public class PlayerJoinActions implements Listener {
 		player.setPlayerListName(RedMain.get().getRankManager().getRank(player).getName() + " " + player.getName());
 		ScoreboardCreator scoreboard = new ScoreboardCreator();
 		scoreboard.scoreboard(player);
+		if (RedMain.get().getRanks() != null) {
+			if (!(RedMain.get().getRanks().containsKey(player.getName()))) {
+				RedMain.get().getRankManager().createFakePlayer(player, "member");
+				RedMain.get().getRanks().put(player.getName(), "member");
+			}
+		}
+
 
 		 */
 	}

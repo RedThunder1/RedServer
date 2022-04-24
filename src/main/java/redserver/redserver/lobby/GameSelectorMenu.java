@@ -15,6 +15,7 @@ public class GameSelectorMenu {
         for (int i = 0; i < 54; i++) {
             ItemStack blackGlass = new ItemStack(Material.BLACK_STAINED_GLASS, 1);
             ItemMeta emptyMeta = blackGlass.getItemMeta();
+            assert emptyMeta != null;
             emptyMeta.setDisplayName("-");
             blackGlass.setItemMeta(emptyMeta);
             inventory.setItem(i, blackGlass);
@@ -22,18 +23,21 @@ public class GameSelectorMenu {
         
         ItemStack smp = new ItemStack(Material.GRASS_BLOCK);
         ItemMeta smpMeta = smp.getItemMeta();
+        assert smpMeta != null;
         smpMeta.setDisplayName(ChatColor.GREEN + "SMP");
         smp.setItemMeta(smpMeta);
         inventory.setItem(2, smp);
         
         ItemStack duel = new ItemStack(Material.BEDROCK);
         ItemMeta duelMeta = duel.getItemMeta();
+        assert duelMeta != null;
         duelMeta.setDisplayName(ChatColor.RED + "(WIP) Duel (WIP)");
         duel.setItemMeta(duelMeta);
         inventory.setItem(4, duel);
         
         ItemStack kitpvp = new ItemStack(Material.BEDROCK);
         ItemMeta kitpvpmeta = kitpvp.getItemMeta();
+        assert kitpvpmeta != null;
         kitpvpmeta.setDisplayName(ChatColor.RED + "(WIP) KitPvp (WIP)");
         kitpvp.setItemMeta(kitpvpmeta);
         inventory.setItem(6, kitpvp);

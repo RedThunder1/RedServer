@@ -42,6 +42,7 @@ public class SMPTeleportCommand implements CommandExecutor {
         }
 
         player.teleport(loc);
+        player.getInventory().clear();
 
         return false;
     }

@@ -16,10 +16,15 @@ import redserver.redserver.commands.report.manager.ReportForm;
 
 public class SkyblockCreateGUI implements Listener{
 	public static void reports(Player player) {
-        Inventory inventory = RedMain.get().getServer().createInventory(null, 54, ChatColor.RED + "" + ChatColor.BOLD + "Reports Menu");
+        Inventory inventory = RedMain.get().getServer().createInventory(null, 54, ChatColor.GREEN + "" + ChatColor.BOLD + "SkyBlock");
 
         for(ReportForm reportform : RedMain.get().getReportManager().reportForms) {
-            //Menu code
+            ItemStack icon = new ItemStack(Material.GRASS_BLOCK);
+            ItemMeta meta = icon.getItemMeta();
+            meta.setDisplayName(ChatColor.GREEN + "Normal Skyblock");
+            icon.setItemMeta(meta);
+
+            //TODO: Add other versions here
         }
 
         player.openInventory(inventory);

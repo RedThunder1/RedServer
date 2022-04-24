@@ -8,20 +8,22 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class GameSelectorListener implements Listener {
 
 	
 	@EventHandler
 	public void invClick(InventoryClickEvent event) {
 		Player player = (Player) event.getWhoClicked();
-		Inventory inv = event.getInventory();
 		ItemStack item = event.getCurrentItem();
 		if (event.getView().getTitle().equals(ChatColor.AQUA + "" + ChatColor.BOLD + "Games")) {
-			if (item.getItemMeta().getDisplayName().equals(ChatColor.GREEN + "SMP")) {
+			assert item != null;
+			if (Objects.requireNonNull(item.getItemMeta()).getDisplayName().equals(ChatColor.GREEN + "SMP")) {
 				player.performCommand("smp");
 				event.setCancelled(true);
 			} else if (item.getItemMeta().getDisplayName().equals(ChatColor.RED + "(WIP) Duel (WIP)")) {
-				player.sendMessage(ChatColor.RED + "Unfortuatly these game are not finished yet! \nIn our discord you can see updates on the server");
+				player.sendMessage(ChatColor.RED + "Unfortunately these game are not finished yet! \nIn our discord you can see updates on the server!");
 				event.setCancelled(true);
 			} else {
 				event.setCancelled(true);
