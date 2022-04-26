@@ -14,7 +14,7 @@ public class HealCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
-        if (!(RedMain.get().playerCheck(sender))) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage(Messages.CONSOLECANTUSE);
             return false;
         }

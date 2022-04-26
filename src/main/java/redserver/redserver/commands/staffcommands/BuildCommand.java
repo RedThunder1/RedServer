@@ -22,7 +22,7 @@ public class BuildCommand implements CommandExecutor, Listener {
 
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
 
-        if (!(RedMain.get().playerCheck(sender))) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + Messages.CONSOLECANTUSE);
             return false;
         }

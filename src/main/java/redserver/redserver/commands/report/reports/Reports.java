@@ -14,7 +14,7 @@ public class Reports implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!(RedMain.get().playerCheck(sender))) {	return false; }
+        if (!(sender instanceof Player)) {	return false; }
         Player player = (Player) sender;
         if (!(RedMain.get().opCheck(player))) {
             player.sendMessage(Messages.NOPERMS);

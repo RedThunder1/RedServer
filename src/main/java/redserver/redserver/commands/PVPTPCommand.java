@@ -16,7 +16,7 @@ public class PVPTPCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!(RedMain.get().playerCheck(sender))) { return false; }
+        if (!(sender instanceof Player)) { return false; }
         Player player = (Player) sender;
         World world = Bukkit.getWorld("pvp");
         Location location = new Location(world, -125.5, 69, 249.5);

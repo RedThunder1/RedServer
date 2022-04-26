@@ -2,7 +2,6 @@ package redserver.redserver;
 
 import com.google.gson.Gson;
 import org.bukkit.*;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -10,11 +9,15 @@ import org.bukkit.scheduler.BukkitScheduler;
 import redserver.redserver.commands.HubTPCommand;
 import redserver.redserver.commands.report.PlayerReport;
 import redserver.redserver.commands.report.PlayerReportMenuEvent;
-import redserver.redserver.commands.report.reports.InfoMenu.ReportsInfoEvent;
+import redserver.redserver.commands.report.manager.ReportManager;
 import redserver.redserver.commands.report.reports.Reports;
+import redserver.redserver.commands.report.reports.InfoMenu.ReportsInfoEvent;
 import redserver.redserver.commands.report.reports.ReportsMenu.ReportsMenuEvent;
-import redserver.redserver.commands.report.manager.*;
-import redserver.redserver.commands.staffcommands.*;
+import redserver.redserver.commands.staffcommands.BuildCommand;
+import redserver.redserver.commands.staffcommands.HealCommand;
+import redserver.redserver.commands.staffcommands.LaunchCommand;
+import redserver.redserver.commands.staffcommands.SkullGiverCommand;
+import redserver.redserver.commands.staffcommands.StaffChat;
 import redserver.redserver.commands.staffcommands.vanish.VanishCommand;
 import redserver.redserver.commands.teleport.TPACommand;
 import redserver.redserver.commands.worlds.CreateWorldCommand;
@@ -23,18 +26,17 @@ import redserver.redserver.commands.worlds.WorldTPCommand;
 import redserver.redserver.events.PlayerJoinActions;
 import redserver.redserver.events.WorldProtectionListener;
 import redserver.redserver.gson.GSONManager;
-import redserver.redserver.kitpvp.KitPvpTPCommand;
+import redserver.redserver.kitpvp.*;
 import redserver.redserver.kitpvp.kitpvpmenu.KitCommand;
 import redserver.redserver.kitpvp.kitpvpmenu.KitPvpMenuAction;
 import redserver.redserver.lobby.*;
 import redserver.redserver.smp.commands.HomeCommand;
 import redserver.redserver.smp.commands.SMPTeleportCommand;
-import redserver.redserver.utilities.AnnouncementMessages;
+import redserver.redserver.smp.saveloc.SaveSMPLocation;
+import redserver.redserver.utilities.*;
 import redserver.redserver.utilities.ranks.FakePlayer;
 import redserver.redserver.utilities.ranks.Ranks;
 import redserver.redserver.utilities.ranks.ServerRanks;
-import redserver.redserver.smp.saveloc.*;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -199,17 +201,7 @@ public final class RedMain extends JavaPlugin {
     	ranks.put("RedThunder117", "owner");
     	Player player = Bukkit.getPlayer("RedThunder117");
     	this.getRankManager().createFakePlayer(player, "owner");
-    }
-
-    public boolean playerCheck(CommandSender sender) {
-        return sender instanceof Player;
-    }
-
-    public boolean opCheck(Player player) {
-        return player.isOp();
-    }
-    
-    
+    }   
 }
 
 

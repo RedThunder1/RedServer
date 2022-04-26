@@ -14,7 +14,7 @@ public class PlayerReport implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(RedMain.get().playerCheck(sender))) { return false; }
+        if (!(sender instanceof Player)) { return false; }
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "Usage is /report PlayerName");

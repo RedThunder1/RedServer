@@ -16,7 +16,7 @@ public class HubTPCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!(RedMain.get().playerCheck(sender))) { return false; }
+        if (!(sender instanceof Player)) { return false; }
         Player player = (Player) sender;
         World world = Bukkit.getWorld("world");
         Location location = new Location(world, 0.5, 71, 0.5);

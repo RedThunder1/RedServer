@@ -14,7 +14,7 @@ public class SkyblockManagmentCommands implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		
-		if (RedMain.get().playerCheck(sender)) {
+		if (!(sender instanceof Player)) {
 			sender.sendMessage(Messages.CONSOLECANTUSE);
 			return false;
 		}
