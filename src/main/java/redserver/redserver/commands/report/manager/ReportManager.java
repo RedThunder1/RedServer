@@ -15,8 +15,11 @@ public class ReportManager {
 
     public ReportForm getReportFormByID(UUID id) {
         for(ReportForm reportForm : reportForms) {
-            if(String.valueOf(reportForm.id).equals(String.valueOf(id))) { return reportForm; }
+            if(String.valueOf(reportForm.id).equals(String.valueOf(id))) { 
+            	return reportForm; 
+            }
         }
+        
         return null;
     }
 
